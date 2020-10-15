@@ -231,6 +231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: 
   textList:
+  - s: nqkuv put stavat bugove i championa trugva po diagonal
+    state: 1
+    show: 1
+    deleteQuestion: 0
   - s: "OnMouseDown -> kato se selectira player da go izprashta otgore i \notlqvo
       na mishkata, taka che da moje da se pointvat tile-ove s mishkata\nbez playera
       da prechi. V gameObject pred kamerata\n"
@@ -253,26 +257,10 @@ MonoBehaviour:
     state: 2
     show: 1
     deleteQuestion: 0
-  - s: 'da se slojat colideri na championite i kato se udarqt 2 championa
-
-      -
-      da se sprat za moment
-
-      - da vzemat nai prekiq put do targeta si, koito
-      e svoboden
-
-      - i da trugnat po nego'
-    state: 2
-    show: 1
-    deleteQuestion: 0
   - s: 'da napravq mapa da ne e na kubcheta, a na hexove
 
       - po strategicheski
       position'
-    state: 2
-    show: 1
-    deleteQuestion: 0
-  - s: geroiote da se dvijat po tile-ove
     state: 2
     show: 1
     deleteQuestion: 0
@@ -290,7 +278,7 @@ GameObject:
   - component: {fileID: 8928255}
   - component: {fileID: 8928258}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -389,7 +377,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &14151528
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +432,7 @@ GameObject:
   - component: {fileID: 46511520}
   - component: {fileID: 46511523}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,7 +531,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &71273275
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +551,7 @@ GameObject:
   - component: {fileID: 71273277}
   - component: {fileID: 71273280}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,7 +650,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &90794409
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +670,7 @@ GameObject:
   - component: {fileID: 90794411}
   - component: {fileID: 90794414}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -766,7 +769,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &101327169
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +789,7 @@ GameObject:
   - component: {fileID: 101327171}
   - component: {fileID: 101327174}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -880,7 +888,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &126334525
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,7 +1007,7 @@ GameObject:
   - component: {fileID: 126605032}
   - component: {fileID: 126605035}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1093,7 +1106,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &128270324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,7 +1126,7 @@ GameObject:
   - component: {fileID: 128270326}
   - component: {fileID: 128270329}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1207,7 +1225,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &146750154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1245,7 @@ GameObject:
   - component: {fileID: 146750156}
   - component: {fileID: 146750159}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1321,7 +1344,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &166868902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1364,7 @@ GameObject:
   - component: {fileID: 166868904}
   - component: {fileID: 166868907}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1435,7 +1463,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &168650286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,7 +1483,7 @@ GameObject:
   - component: {fileID: 168650288}
   - component: {fileID: 168650291}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1549,7 +1582,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &174771431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1602,7 @@ GameObject:
   - component: {fileID: 174771433}
   - component: {fileID: 174771436}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1663,7 +1701,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &186185195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1721,7 @@ GameObject:
   - component: {fileID: 186185197}
   - component: {fileID: 186185200}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1777,7 +1820,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &212082757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,7 +1915,7 @@ GameObject:
   - component: {fileID: 235500050}
   - component: {fileID: 235500053}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1966,7 +2014,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &245988426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,7 +2034,7 @@ GameObject:
   - component: {fileID: 245988428}
   - component: {fileID: 245988431}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2080,7 +2133,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &248091930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,7 +2312,7 @@ GameObject:
   - component: {fileID: 282779088}
   - component: {fileID: 282779091}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2353,7 +2411,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &291137534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2431,7 @@ GameObject:
   - component: {fileID: 291137536}
   - component: {fileID: 291137539}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2467,7 +2530,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &296579608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,7 +2550,7 @@ GameObject:
   - component: {fileID: 296579610}
   - component: {fileID: 296579613}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2581,7 +2649,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &297043557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,7 +2758,7 @@ GameObject:
   - component: {fileID: 331222685}
   - component: {fileID: 331222688}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2784,7 +2857,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &334516841
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +2877,7 @@ GameObject:
   - component: {fileID: 334516843}
   - component: {fileID: 334516846}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2898,7 +2976,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &338588789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,7 +2996,7 @@ GameObject:
   - component: {fileID: 338588791}
   - component: {fileID: 338588794}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3012,7 +3095,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &353286914
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,7 +3115,7 @@ GameObject:
   - component: {fileID: 353286916}
   - component: {fileID: 353286919}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3126,7 +3214,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &364208923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,7 +3234,7 @@ GameObject:
   - component: {fileID: 364208925}
   - component: {fileID: 364208928}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3240,7 +3333,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &380279845
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,7 +3353,7 @@ GameObject:
   - component: {fileID: 380279847}
   - component: {fileID: 380279850}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3354,7 +3452,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &385102912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,7 +3472,7 @@ GameObject:
   - component: {fileID: 385102914}
   - component: {fileID: 385102917}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3468,7 +3571,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &389078904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3483,7 +3591,7 @@ GameObject:
   - component: {fileID: 389078906}
   - component: {fileID: 389078909}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3582,7 +3690,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &395313870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,7 +3710,7 @@ GameObject:
   - component: {fileID: 395313872}
   - component: {fileID: 395313875}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3696,7 +3809,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &409825661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,7 +3829,7 @@ GameObject:
   - component: {fileID: 409825663}
   - component: {fileID: 409825666}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3810,7 +3928,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &429771142
 GameObject:
   m_ObjectHideFlags: 0
@@ -3825,7 +3948,7 @@ GameObject:
   - component: {fileID: 429771144}
   - component: {fileID: 429771147}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3924,7 +4047,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &431490519
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,7 +4067,7 @@ GameObject:
   - component: {fileID: 431490521}
   - component: {fileID: 431490524}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4038,7 +4166,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &450319916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4053,7 +4186,7 @@ GameObject:
   - component: {fileID: 450319918}
   - component: {fileID: 450319921}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4152,7 +4285,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &452392345
 GameObject:
   m_ObjectHideFlags: 0
@@ -4167,7 +4305,7 @@ GameObject:
   - component: {fileID: 452392347}
   - component: {fileID: 452392350}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4266,7 +4404,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &452399361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4380,7 +4523,7 @@ GameObject:
   - component: {fileID: 478018651}
   - component: {fileID: 478018654}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4479,7 +4622,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &478647019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,7 +4642,7 @@ GameObject:
   - component: {fileID: 478647021}
   - component: {fileID: 478647024}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4593,7 +4741,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &492044712
 GameObject:
   m_ObjectHideFlags: 0
@@ -4608,7 +4761,7 @@ GameObject:
   - component: {fileID: 492044714}
   - component: {fileID: 492044717}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4707,7 +4860,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &492064843
 GameObject:
   m_ObjectHideFlags: 0
@@ -4758,7 +4916,7 @@ GameObject:
   - component: {fileID: 497696373}
   - component: {fileID: 497696376}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4857,7 +5015,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &499457334
 GameObject:
   m_ObjectHideFlags: 0
@@ -4872,7 +5035,7 @@ GameObject:
   - component: {fileID: 499457336}
   - component: {fileID: 499457339}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4971,7 +5134,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &521720355
 GameObject:
   m_ObjectHideFlags: 0
@@ -5145,7 +5313,7 @@ GameObject:
   - component: {fileID: 568199562}
   - component: {fileID: 568199565}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5244,7 +5412,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &578167586
 GameObject:
   m_ObjectHideFlags: 0
@@ -5259,7 +5432,7 @@ GameObject:
   - component: {fileID: 578167588}
   - component: {fileID: 578167591}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5358,7 +5531,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &586796490
 GameObject:
   m_ObjectHideFlags: 0
@@ -5373,7 +5551,7 @@ GameObject:
   - component: {fileID: 586796492}
   - component: {fileID: 586796495}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5472,7 +5650,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &588760335
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,7 +5745,7 @@ GameObject:
   - component: {fileID: 618992052}
   - component: {fileID: 618992055}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5661,7 +5844,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &621868494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5676,7 +5864,7 @@ GameObject:
   - component: {fileID: 621868496}
   - component: {fileID: 621868499}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5775,7 +5963,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &628381923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,7 +5983,7 @@ GameObject:
   - component: {fileID: 628381925}
   - component: {fileID: 628381928}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5889,7 +6082,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &628951546
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,7 +6102,7 @@ GameObject:
   - component: {fileID: 628951548}
   - component: {fileID: 628951551}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6003,7 +6201,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &630334593
 GameObject:
   m_ObjectHideFlags: 0
@@ -6018,6 +6221,7 @@ GameObject:
   - component: {fileID: 630334595}
   - component: {fileID: 630334594}
   - component: {fileID: 630334599}
+  - component: {fileID: 630334600}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -6044,11 +6248,14 @@ MonoBehaviour:
   health: 0
   armor: 0
   movementSpeed: 0
-  healthBar: {fileID: 1158430798}
   target: {fileID: 0}
+  healthBar: {fileID: 1158430798}
   distanceToTarget: 0
-  enemyState: 0
+  championState: 0
+  targetTile: {fileID: 0}
   isDead: 0
+  isTargetInRange: 0
+  moving: 0
 --- !u!136 &630334595
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6119,14 +6326,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630334593}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 10, y: 1.4, z: 9}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 452399362}
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &630334599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6137,6 +6344,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e004f9a00c00d4845ad2c59aa23b526f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &630334600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630334593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814a4a346c4d8144d9a3bd83c8f515d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &652115509
@@ -6153,7 +6372,7 @@ GameObject:
   - component: {fileID: 652115511}
   - component: {fileID: 652115514}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6252,7 +6471,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &675219398
 GameObject:
   m_ObjectHideFlags: 0
@@ -6267,7 +6491,7 @@ GameObject:
   - component: {fileID: 675219400}
   - component: {fileID: 675219403}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6366,7 +6590,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &678148956
 GameObject:
   m_ObjectHideFlags: 0
@@ -6381,6 +6610,7 @@ GameObject:
   - component: {fileID: 678148959}
   - component: {fileID: 678148957}
   - component: {fileID: 678148958}
+  - component: {fileID: 678148963}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -6407,11 +6637,14 @@ MonoBehaviour:
   health: 0
   armor: 0
   movementSpeed: 0
-  healthBar: {fileID: 1332594906}
   target: {fileID: 0}
+  healthBar: {fileID: 1332594906}
   distanceToTarget: 0
-  enemyState: 0
+  championState: 0
+  targetTile: {fileID: 0}
   isDead: 0
+  isTargetInRange: 0
+  moving: 0
 --- !u!114 &678148958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6494,14 +6727,26 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678148956}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 4, y: 1.4, z: 7}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_Children:
   - {fileID: 2103948151}
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &678148963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678148956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814a4a346c4d8144d9a3bd83c8f515d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &687400717
 GameObject:
   m_ObjectHideFlags: 0
@@ -6516,7 +6761,7 @@ GameObject:
   - component: {fileID: 687400719}
   - component: {fileID: 687400722}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6615,7 +6860,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &693809540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6630,7 +6880,7 @@ GameObject:
   - component: {fileID: 693809542}
   - component: {fileID: 693809545}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6729,7 +6979,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &694867388
 GameObject:
   m_ObjectHideFlags: 0
@@ -6744,7 +6999,7 @@ GameObject:
   - component: {fileID: 694867390}
   - component: {fileID: 694867393}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6843,7 +7098,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &698665494
 GameObject:
   m_ObjectHideFlags: 0
@@ -6992,7 +7252,7 @@ GameObject:
   - component: {fileID: 710330617}
   - component: {fileID: 710330620}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7091,7 +7351,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &729577784
 GameObject:
   m_ObjectHideFlags: 0
@@ -7106,7 +7371,7 @@ GameObject:
   - component: {fileID: 729577786}
   - component: {fileID: 729577789}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7205,7 +7470,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &745316637
 GameObject:
   m_ObjectHideFlags: 0
@@ -7220,7 +7490,7 @@ GameObject:
   - component: {fileID: 745316639}
   - component: {fileID: 745316642}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7319,7 +7589,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &749319983
 GameObject:
   m_ObjectHideFlags: 0
@@ -7334,7 +7609,7 @@ GameObject:
   - component: {fileID: 749319985}
   - component: {fileID: 749319988}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7433,7 +7708,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &749612984
 GameObject:
   m_ObjectHideFlags: 0
@@ -7448,7 +7728,7 @@ GameObject:
   - component: {fileID: 749612986}
   - component: {fileID: 749612989}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7547,7 +7827,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &763162291
 GameObject:
   m_ObjectHideFlags: 0
@@ -7562,7 +7847,7 @@ GameObject:
   - component: {fileID: 763162293}
   - component: {fileID: 763162296}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7661,7 +7946,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &769990157
 GameObject:
   m_ObjectHideFlags: 0
@@ -7676,7 +7966,7 @@ GameObject:
   - component: {fileID: 769990159}
   - component: {fileID: 769990162}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7775,7 +8065,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &786659345
 GameObject:
   m_ObjectHideFlags: 0
@@ -7790,7 +8085,7 @@ GameObject:
   - component: {fileID: 786659347}
   - component: {fileID: 786659350}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7889,7 +8184,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &804408818
 GameObject:
   m_ObjectHideFlags: 0
@@ -7904,7 +8204,7 @@ GameObject:
   - component: {fileID: 804408820}
   - component: {fileID: 804408823}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8003,7 +8303,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &805922397
 GameObject:
   m_ObjectHideFlags: 0
@@ -8060,7 +8365,7 @@ GameObject:
   - component: {fileID: 816076102}
   - component: {fileID: 816076105}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8159,7 +8464,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &834625860
 GameObject:
   m_ObjectHideFlags: 0
@@ -8174,7 +8484,7 @@ GameObject:
   - component: {fileID: 834625862}
   - component: {fileID: 834625865}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8273,7 +8583,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &839918386
 GameObject:
   m_ObjectHideFlags: 0
@@ -8288,7 +8603,7 @@ GameObject:
   - component: {fileID: 839918388}
   - component: {fileID: 839918391}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8387,7 +8702,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &850643059
 GameObject:
   m_ObjectHideFlags: 0
@@ -8402,7 +8722,7 @@ GameObject:
   - component: {fileID: 850643061}
   - component: {fileID: 850643064}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8501,7 +8821,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &863746444
 GameObject:
   m_ObjectHideFlags: 0
@@ -8516,7 +8841,7 @@ GameObject:
   - component: {fileID: 863746446}
   - component: {fileID: 863746449}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8615,7 +8940,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &879255505
 GameObject:
   m_ObjectHideFlags: 0
@@ -8630,7 +8960,7 @@ GameObject:
   - component: {fileID: 879255507}
   - component: {fileID: 879255510}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8729,7 +9059,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &879799013
 GameObject:
   m_ObjectHideFlags: 0
@@ -8744,7 +9079,7 @@ GameObject:
   - component: {fileID: 879799015}
   - component: {fileID: 879799018}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8843,7 +9178,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &898246928
 GameObject:
   m_ObjectHideFlags: 0
@@ -8858,7 +9198,7 @@ GameObject:
   - component: {fileID: 898246930}
   - component: {fileID: 898246933}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8957,7 +9297,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &908579058
 GameObject:
   m_ObjectHideFlags: 0
@@ -8972,7 +9317,7 @@ GameObject:
   - component: {fileID: 908579060}
   - component: {fileID: 908579063}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9071,7 +9416,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &918080355
 GameObject:
   m_ObjectHideFlags: 0
@@ -9086,7 +9436,7 @@ GameObject:
   - component: {fileID: 918080357}
   - component: {fileID: 918080360}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9185,7 +9535,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &918703398
 GameObject:
   m_ObjectHideFlags: 0
@@ -9200,7 +9555,7 @@ GameObject:
   - component: {fileID: 918703400}
   - component: {fileID: 918703403}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9299,7 +9654,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &933792236
 GameObject:
   m_ObjectHideFlags: 0
@@ -9314,7 +9674,7 @@ GameObject:
   - component: {fileID: 933792238}
   - component: {fileID: 933792241}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9413,7 +9773,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &942113311
 GameObject:
   m_ObjectHideFlags: 0
@@ -9428,7 +9793,7 @@ GameObject:
   - component: {fileID: 942113313}
   - component: {fileID: 942113316}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9527,7 +9892,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &954461409
 GameObject:
   m_ObjectHideFlags: 0
@@ -9667,7 +10037,7 @@ GameObject:
   - component: {fileID: 996171344}
   - component: {fileID: 996171347}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9766,7 +10136,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &998969413
 GameObject:
   m_ObjectHideFlags: 0
@@ -9781,7 +10156,7 @@ GameObject:
   - component: {fileID: 998969415}
   - component: {fileID: 998969418}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9880,7 +10255,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1007117630
 GameObject:
   m_ObjectHideFlags: 0
@@ -9895,7 +10275,7 @@ GameObject:
   - component: {fileID: 1007117632}
   - component: {fileID: 1007117635}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9994,7 +10374,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1033517121
 GameObject:
   m_ObjectHideFlags: 0
@@ -10009,7 +10394,7 @@ GameObject:
   - component: {fileID: 1033517123}
   - component: {fileID: 1033517126}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10108,7 +10493,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1078152498
 GameObject:
   m_ObjectHideFlags: 0
@@ -10123,7 +10513,7 @@ GameObject:
   - component: {fileID: 1078152500}
   - component: {fileID: 1078152503}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10222,7 +10612,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1084295414
 GameObject:
   m_ObjectHideFlags: 0
@@ -10237,7 +10632,7 @@ GameObject:
   - component: {fileID: 1084295416}
   - component: {fileID: 1084295419}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10336,7 +10731,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1096635316
 GameObject:
   m_ObjectHideFlags: 0
@@ -10351,7 +10751,7 @@ GameObject:
   - component: {fileID: 1096635318}
   - component: {fileID: 1096635321}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10450,7 +10850,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1097105115
 GameObject:
   m_ObjectHideFlags: 0
@@ -10465,7 +10870,7 @@ GameObject:
   - component: {fileID: 1097105117}
   - component: {fileID: 1097105120}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10564,7 +10969,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1106987559
 GameObject:
   m_ObjectHideFlags: 0
@@ -10579,7 +10989,7 @@ GameObject:
   - component: {fileID: 1106987561}
   - component: {fileID: 1106987564}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10678,7 +11088,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1129548942
 GameObject:
   m_ObjectHideFlags: 0
@@ -10693,7 +11108,7 @@ GameObject:
   - component: {fileID: 1129548944}
   - component: {fileID: 1129548947}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10792,7 +11207,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1148700325
 GameObject:
   m_ObjectHideFlags: 0
@@ -10807,7 +11227,7 @@ GameObject:
   - component: {fileID: 1148700327}
   - component: {fileID: 1148700330}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10906,7 +11326,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1158430797
 GameObject:
   m_ObjectHideFlags: 0
@@ -10981,7 +11406,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158430797}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0, y: 0.8660254, z: -0.5, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.325}
   m_LocalScale: {x: 0.008704142, y: 0.0017972379, z: 0.0029021571}
   m_Children:
@@ -10990,7 +11415,7 @@ RectTransform:
   - {fileID: 1988808420}
   m_Father: {fileID: 452399362}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1.24}
@@ -11010,7 +11435,7 @@ GameObject:
   - component: {fileID: 1159870773}
   - component: {fileID: 1159870776}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11109,7 +11534,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1162283870
 GameObject:
   m_ObjectHideFlags: 0
@@ -11196,7 +11626,7 @@ GameObject:
   - component: {fileID: 1171603914}
   - component: {fileID: 1171603917}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11295,7 +11725,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!850595691 &1195078297
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -11371,7 +11806,7 @@ GameObject:
   - component: {fileID: 1200694981}
   - component: {fileID: 1200694984}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11470,7 +11905,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1215842279
 GameObject:
   m_ObjectHideFlags: 0
@@ -11485,7 +11925,7 @@ GameObject:
   - component: {fileID: 1215842281}
   - component: {fileID: 1215842284}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11584,7 +12024,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1223119224
 GameObject:
   m_ObjectHideFlags: 0
@@ -11599,7 +12044,7 @@ GameObject:
   - component: {fileID: 1223119226}
   - component: {fileID: 1223119229}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11698,7 +12143,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1225420300
 GameObject:
   m_ObjectHideFlags: 0
@@ -11755,7 +12205,7 @@ GameObject:
   - component: {fileID: 1248707596}
   - component: {fileID: 1248707599}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11854,7 +12304,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1280120241
 GameObject:
   m_ObjectHideFlags: 0
@@ -11869,7 +12324,7 @@ GameObject:
   - component: {fileID: 1280120243}
   - component: {fileID: 1280120246}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11968,7 +12423,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1285857351
 GameObject:
   m_ObjectHideFlags: 0
@@ -11983,7 +12443,7 @@ GameObject:
   - component: {fileID: 1285857353}
   - component: {fileID: 1285857356}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12082,7 +12542,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1291755707
 GameObject:
   m_ObjectHideFlags: 0
@@ -12132,7 +12597,7 @@ GameObject:
   - component: {fileID: 1307680983}
   - component: {fileID: 1307680986}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12231,7 +12696,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1332594905
 GameObject:
   m_ObjectHideFlags: 0
@@ -12306,7 +12776,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332594905}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0, y: 0.8660254, z: -0.5, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.325}
   m_LocalScale: {x: 0.008704142, y: 0.0017972379, z: 0.0029021571}
   m_Children:
@@ -12315,7 +12785,7 @@ RectTransform:
   - {fileID: 1291755708}
   m_Father: {fileID: 2103948151}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 1.24}
@@ -12335,7 +12805,7 @@ GameObject:
   - component: {fileID: 1332635183}
   - component: {fileID: 1332635186}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12434,7 +12904,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1334816405
 GameObject:
   m_ObjectHideFlags: 0
@@ -12449,7 +12924,7 @@ GameObject:
   - component: {fileID: 1334816407}
   - component: {fileID: 1334816410}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12548,7 +13023,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1346565795
 GameObject:
   m_ObjectHideFlags: 0
@@ -12606,6 +13086,7 @@ GameObject:
   - component: {fileID: 1347602792}
   - component: {fileID: 1347602799}
   - component: {fileID: 1347602797}
+  - component: {fileID: 1347602798}
   m_Layer: 0
   m_Name: Player
   m_TagString: Champion
@@ -12632,12 +13113,15 @@ MonoBehaviour:
   health: 0
   armor: 0
   movementSpeed: 0
-  healthBar: {fileID: 2088460756}
   target: {fileID: 0}
+  healthBar: {fileID: 2088460756}
   distanceToTarget: 0
   championState: 0
-  selected: 0
+  targetTile: {fileID: 0}
   isDead: 0
+  isTargetInRange: 0
+  moving: 0
+  selected: 0
 --- !u!136 &1347602793
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12728,6 +13212,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a78cfd34645e3439459bcc30a88ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1347602798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347602791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814a4a346c4d8144d9a3bd83c8f515d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1347602799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12754,7 +13250,7 @@ GameObject:
   - component: {fileID: 1358411356}
   - component: {fileID: 1358411359}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12853,7 +13349,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1373244999
 GameObject:
   m_ObjectHideFlags: 0
@@ -13067,7 +13568,7 @@ GameObject:
   - component: {fileID: 1412190577}
   - component: {fileID: 1412190580}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13166,7 +13667,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1428959852
 GameObject:
   m_ObjectHideFlags: 0
@@ -13181,7 +13687,7 @@ GameObject:
   - component: {fileID: 1428959854}
   - component: {fileID: 1428959857}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13280,7 +13786,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1438910578
 GameObject:
   m_ObjectHideFlags: 0
@@ -13337,7 +13848,7 @@ GameObject:
   - component: {fileID: 1445132655}
   - component: {fileID: 1445132658}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13436,7 +13947,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1449510762
 GameObject:
   m_ObjectHideFlags: 0
@@ -13451,7 +13967,7 @@ GameObject:
   - component: {fileID: 1449510764}
   - component: {fileID: 1449510767}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13550,7 +14066,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1470184260
 GameObject:
   m_ObjectHideFlags: 0
@@ -13565,7 +14086,7 @@ GameObject:
   - component: {fileID: 1470184262}
   - component: {fileID: 1470184265}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13664,7 +14185,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1482479941
 GameObject:
   m_ObjectHideFlags: 0
@@ -13679,7 +14205,7 @@ GameObject:
   - component: {fileID: 1482479943}
   - component: {fileID: 1482479946}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13778,7 +14304,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1496998719
 GameObject:
   m_ObjectHideFlags: 0
@@ -13793,7 +14324,7 @@ GameObject:
   - component: {fileID: 1496998721}
   - component: {fileID: 1496998724}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13892,7 +14423,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1511526245
 GameObject:
   m_ObjectHideFlags: 0
@@ -13907,7 +14443,7 @@ GameObject:
   - component: {fileID: 1511526247}
   - component: {fileID: 1511526250}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14006,7 +14542,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1534276286
 GameObject:
   m_ObjectHideFlags: 0
@@ -14096,7 +14637,7 @@ GameObject:
   - component: {fileID: 1539540261}
   - component: {fileID: 1539540264}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14195,7 +14736,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1557995853
 GameObject:
   m_ObjectHideFlags: 0
@@ -14252,7 +14798,7 @@ GameObject:
   - component: {fileID: 1563929172}
   - component: {fileID: 1563929175}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14351,7 +14897,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1573260073
 GameObject:
   m_ObjectHideFlags: 0
@@ -14366,7 +14917,7 @@ GameObject:
   - component: {fileID: 1573260075}
   - component: {fileID: 1573260078}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14465,7 +15016,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1578554976
 GameObject:
   m_ObjectHideFlags: 0
@@ -14480,7 +15036,7 @@ GameObject:
   - component: {fileID: 1578554978}
   - component: {fileID: 1578554981}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14579,7 +15135,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1581835832
 GameObject:
   m_ObjectHideFlags: 0
@@ -14594,7 +15155,7 @@ GameObject:
   - component: {fileID: 1581835834}
   - component: {fileID: 1581835837}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14693,7 +15254,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1587133565
 GameObject:
   m_ObjectHideFlags: 0
@@ -14708,7 +15274,7 @@ GameObject:
   - component: {fileID: 1587133567}
   - component: {fileID: 1587133570}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14807,7 +15373,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1592040523
 GameObject:
   m_ObjectHideFlags: 0
@@ -14822,7 +15393,7 @@ GameObject:
   - component: {fileID: 1592040525}
   - component: {fileID: 1592040528}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14921,7 +15492,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1609663937
 GameObject:
   m_ObjectHideFlags: 0
@@ -14936,7 +15512,7 @@ GameObject:
   - component: {fileID: 1609663939}
   - component: {fileID: 1609663942}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15035,7 +15611,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1612669808
 GameObject:
   m_ObjectHideFlags: 0
@@ -15092,7 +15673,7 @@ GameObject:
   - component: {fileID: 1633793240}
   - component: {fileID: 1633793243}
   m_Layer: 0
-  m_Name: Tile (3)
+  m_Name: Tile (3,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15191,7 +15772,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1635799388
 GameObject:
   m_ObjectHideFlags: 0
@@ -15206,7 +15792,7 @@ GameObject:
   - component: {fileID: 1635799390}
   - component: {fileID: 1635799393}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15305,7 +15891,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1641590029
 GameObject:
   m_ObjectHideFlags: 0
@@ -15320,7 +15911,7 @@ GameObject:
   - component: {fileID: 1641590031}
   - component: {fileID: 1641590034}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,7)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15419,7 +16010,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1648028277
 GameObject:
   m_ObjectHideFlags: 0
@@ -15434,7 +16030,7 @@ GameObject:
   - component: {fileID: 1648028279}
   - component: {fileID: 1648028282}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15533,7 +16129,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1654253696
 GameObject:
   m_ObjectHideFlags: 0
@@ -15548,7 +16149,7 @@ GameObject:
   - component: {fileID: 1654253698}
   - component: {fileID: 1654253701}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15561,7 +16162,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654253696}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -15647,7 +16248,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1658877765
 GameObject:
   m_ObjectHideFlags: 0
@@ -15737,7 +16343,7 @@ GameObject:
   - component: {fileID: 1666759150}
   - component: {fileID: 1666759153}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15836,7 +16442,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1667881214
 GameObject:
   m_ObjectHideFlags: 0
@@ -15851,7 +16462,7 @@ GameObject:
   - component: {fileID: 1667881216}
   - component: {fileID: 1667881219}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,2)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15950,7 +16561,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1670811335
 GameObject:
   m_ObjectHideFlags: 0
@@ -15965,7 +16581,7 @@ GameObject:
   - component: {fileID: 1670811337}
   - component: {fileID: 1670811340}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16064,7 +16680,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1701244808
 GameObject:
   m_ObjectHideFlags: 0
@@ -16079,7 +16700,7 @@ GameObject:
   - component: {fileID: 1701244810}
   - component: {fileID: 1701244813}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16178,7 +16799,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1707206074
 GameObject:
   m_ObjectHideFlags: 0
@@ -16193,7 +16819,7 @@ GameObject:
   - component: {fileID: 1707206076}
   - component: {fileID: 1707206079}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16292,7 +16918,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1710386381
 GameObject:
   m_ObjectHideFlags: 0
@@ -16481,7 +17112,7 @@ GameObject:
   - component: {fileID: 1712976757}
   - component: {fileID: 1712976760}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16580,7 +17211,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1713818231
 GameObject:
   m_ObjectHideFlags: 0
@@ -16595,7 +17231,7 @@ GameObject:
   - component: {fileID: 1713818233}
   - component: {fileID: 1713818236}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16694,7 +17330,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1716856986
 GameObject:
   m_ObjectHideFlags: 0
@@ -16709,7 +17350,7 @@ GameObject:
   - component: {fileID: 1716856988}
   - component: {fileID: 1716856991}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16808,7 +17449,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1738554811
 GameObject:
   m_ObjectHideFlags: 0
@@ -16823,7 +17469,7 @@ GameObject:
   - component: {fileID: 1738554813}
   - component: {fileID: 1738554816}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16922,7 +17568,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1760541023
 GameObject:
   m_ObjectHideFlags: 0
@@ -17012,7 +17663,7 @@ GameObject:
   - component: {fileID: 1783530579}
   - component: {fileID: 1783530582}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17111,7 +17762,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1790108027
 GameObject:
   m_ObjectHideFlags: 0
@@ -17126,7 +17782,7 @@ GameObject:
   - component: {fileID: 1790108029}
   - component: {fileID: 1790108032}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,11)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17225,7 +17881,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1790917754
 GameObject:
   m_ObjectHideFlags: 0
@@ -17240,7 +17901,7 @@ GameObject:
   - component: {fileID: 1790917756}
   - component: {fileID: 1790917759}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17339,7 +18000,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1792493058
 GameObject:
   m_ObjectHideFlags: 0
@@ -17354,7 +18020,7 @@ GameObject:
   - component: {fileID: 1792493060}
   - component: {fileID: 1792493063}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17453,7 +18119,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1815212812
 GameObject:
   m_ObjectHideFlags: 0
@@ -17468,7 +18139,7 @@ GameObject:
   - component: {fileID: 1815212814}
   - component: {fileID: 1815212817}
   m_Layer: 0
-  m_Name: Tile (8)
+  m_Name: Tile (8,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17567,7 +18238,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1821978670
 GameObject:
   m_ObjectHideFlags: 0
@@ -17582,7 +18258,7 @@ GameObject:
   - component: {fileID: 1821978672}
   - component: {fileID: 1821978675}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17681,7 +18357,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1850072750
 GameObject:
   m_ObjectHideFlags: 0
@@ -17696,7 +18377,7 @@ GameObject:
   - component: {fileID: 1850072752}
   - component: {fileID: 1850072755}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17795,7 +18476,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1865858227
 GameObject:
   m_ObjectHideFlags: 0
@@ -17810,7 +18496,7 @@ GameObject:
   - component: {fileID: 1865858229}
   - component: {fileID: 1865858232}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17909,7 +18595,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1881683775
 GameObject:
   m_ObjectHideFlags: 0
@@ -17924,7 +18615,7 @@ GameObject:
   - component: {fileID: 1881683777}
   - component: {fileID: 1881683780}
   m_Layer: 0
-  m_Name: Tile (6)
+  m_Name: Tile (6,5)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18023,7 +18714,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1908995759
 GameObject:
   m_ObjectHideFlags: 0
@@ -18038,7 +18734,7 @@ GameObject:
   - component: {fileID: 1908995761}
   - component: {fileID: 1908995764}
   m_Layer: 0
-  m_Name: Tile (2)
+  m_Name: Tile (2,1)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18137,7 +18833,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1929092434
 GameObject:
   m_ObjectHideFlags: 0
@@ -18152,7 +18853,7 @@ GameObject:
   - component: {fileID: 1929092436}
   - component: {fileID: 1929092439}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18251,7 +18952,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1929658114
 GameObject:
   m_ObjectHideFlags: 0
@@ -18266,7 +18972,7 @@ GameObject:
   - component: {fileID: 1929658116}
   - component: {fileID: 1929658119}
   m_Layer: 0
-  m_Name: Tile (11)
+  m_Name: Tile (11,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18365,7 +19071,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1942685207
 GameObject:
   m_ObjectHideFlags: 0
@@ -18380,7 +19091,7 @@ GameObject:
   - component: {fileID: 1942685209}
   - component: {fileID: 1942685212}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: Tile (0,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18479,7 +19190,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1946878320
 GameObject:
   m_ObjectHideFlags: 0
@@ -18494,7 +19210,7 @@ GameObject:
   - component: {fileID: 1946878322}
   - component: {fileID: 1946878325}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,3)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18593,7 +19309,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1971569563
 GameObject:
   m_ObjectHideFlags: 0
@@ -18749,7 +19470,7 @@ GameObject:
   - component: {fileID: 1981102288}
   - component: {fileID: 1981102291}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18848,7 +19569,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &1988808419
 GameObject:
   m_ObjectHideFlags: 0
@@ -18898,7 +19624,7 @@ GameObject:
   - component: {fileID: 2027210079}
   - component: {fileID: 2027210082}
   m_Layer: 0
-  m_Name: Tile (10)
+  m_Name: Tile (10,0)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18997,7 +19723,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &2043599686
 GameObject:
   m_ObjectHideFlags: 0
@@ -19012,7 +19743,7 @@ GameObject:
   - component: {fileID: 2043599688}
   - component: {fileID: 2043599691}
   m_Layer: 0
-  m_Name: Tile (5)
+  m_Name: Tile (5,9)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19111,7 +19842,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &2050846850
 GameObject:
   m_ObjectHideFlags: 0
@@ -19163,6 +19899,7 @@ GameObject:
   - component: {fileID: 2075079367}
   - component: {fileID: 2075079366}
   - component: {fileID: 2075079365}
+  - component: {fileID: 2075079364}
   m_Layer: 0
   m_Name: Player (1)
   m_TagString: Champion
@@ -19170,6 +19907,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2075079364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075079363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814a4a346c4d8144d9a3bd83c8f515d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2075079365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19213,12 +19962,15 @@ MonoBehaviour:
   health: 0
   armor: 0
   movementSpeed: 0
-  healthBar: {fileID: 297043559}
   target: {fileID: 0}
+  healthBar: {fileID: 297043559}
   distanceToTarget: 0
   championState: 0
-  selected: 0
+  targetTile: {fileID: 0}
   isDead: 0
+  isTargetInRange: 0
+  moving: 0
+  selected: 0
 --- !u!136 &2075079369
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19311,7 +20063,7 @@ GameObject:
   - component: {fileID: 2075549117}
   - component: {fileID: 2075549120}
   m_Layer: 0
-  m_Name: Tile (4)
+  m_Name: Tile (4,4)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19410,7 +20162,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &2088460754
 GameObject:
   m_ObjectHideFlags: 0
@@ -19514,7 +20271,7 @@ GameObject:
   - component: {fileID: 2101310754}
   - component: {fileID: 2101310757}
   m_Layer: 0
-  m_Name: Tile (7)
+  m_Name: Tile (7,10)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19613,7 +20370,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &2103948150
 GameObject:
   m_ObjectHideFlags: 0
@@ -19727,7 +20489,7 @@ GameObject:
   - component: {fileID: 2112402468}
   - component: {fileID: 2112402471}
   m_Layer: 0
-  m_Name: Tile (1)
+  m_Name: Tile (1,8)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19826,7 +20588,12 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0
 --- !u!1 &2116550906
 GameObject:
   m_ObjectHideFlags: 0
@@ -19876,7 +20643,7 @@ GameObject:
   - component: {fileID: 2139630111}
   - component: {fileID: 2139630114}
   m_Layer: 0
-  m_Name: Tile (9)
+  m_Name: Tile (9,6)
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19975,4 +20742,9 @@ MonoBehaviour:
   selectable: 0
   pointed: 0
   isPlayerOn: 0
+  parent: {fileID: 0}
+  inShortestPath: 0
   adjacentTileList: []
+  fCost: 0
+  hCost: 0
+  gCost: 0

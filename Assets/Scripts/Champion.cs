@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ChampionState { Attacking, Moving, Idle };
+public enum ChampionState { Attacking, Moving, Idle};
 
 public class Champion : MonoBehaviour
 {

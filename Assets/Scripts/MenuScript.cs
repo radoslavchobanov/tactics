@@ -27,4 +27,15 @@ public class MenuScript
             t.AddComponent<Tile>();
         }
     }
+
+    [MenuItem("Tools/Assign Tile Names")]
+    public static void AssignTileNames()
+    {
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+
+        foreach (GameObject t in tiles)
+        {
+            t.name = "Tile" + " (" + t.transform.position.x + "," + t.transform.position.z + ")";
+        }
+    }
 }

@@ -12,12 +12,12 @@ public class FindClosestChampion : MonoBehaviour
     GameObject closestChampion;
     float distanceToTheClosestChampion;
 
-    EnemyController gameObjectEnemy;
+    EnemyChampController gameObjectEnemy;
 
     private void Start()
     {
         closestChampion = null;
-        gameObjectEnemy = gameObject.GetComponent<EnemyController>();
+        gameObjectEnemy = gameObject.GetComponent<EnemyChampController>();
     }
 
     private void Update()
@@ -39,7 +39,7 @@ public class FindClosestChampion : MonoBehaviour
         if (distanceToTheClosestChampion <= 9 && gameObjectEnemy.target == null)
             gameObjectEnemy.target = closestChampion; // promenq targeta na Playera na nai blizkoto enemy - closestEnemy
         // na dolniq else if da napravq taka che kogato geroq e pochnal da atakuva da ne moje da si smeni targeta -> attack state v controllera
-        else if (gameObjectEnemy.target != null && gameObjectEnemy.enemyState != ChampionState.Attacking && distanceToTheClosestChampion <= gameObjectEnemy.distanceToTarget)
+        else if (gameObjectEnemy.target != null && gameObjectEnemy.championState != ChampionState.Attacking && distanceToTheClosestChampion <= gameObjectEnemy.distanceToTarget)
             // ako ima target, no se poqvi po blizak i geroq ne e pochnal da atakuva
             gameObjectEnemy.target = closestChampion;
     }
