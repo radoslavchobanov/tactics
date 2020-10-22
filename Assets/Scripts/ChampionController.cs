@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChampionController : Champion
 {
     //controller vars
-    public GameObject target; // focused enemy
+    public GameObject target; // focused enemy  
     public Slider healthBar;
     public float distanceToTarget;
     public ChampionState championState;
@@ -28,7 +28,12 @@ public class ChampionController : Champion
         distanceToTarget = Mathf.Infinity;
         halfHeight = GetComponent<Collider>().bounds.extents.y;
         isDead = false;
-        InitChampion();
+
+    }
+
+    public Tile GetCurrentTile()
+    {
+        return TacticsMove.GetChampionTile(gameObject);
     }
 
     public void CalculateDistanceToTarget()
@@ -119,14 +124,18 @@ public class ChampionController : Champion
     public void AttackTarget()
     {
         // play attack animation
+        ChampionController targetController = target.GetComponent<ChampionController>();
 
         Vector3 heading = target.transform.position - gameObject.transform.position;
         gameObject.transform.forward = heading;
 
-        target.GetComponent<ChampionController>().health -= 1 * attackDamage;
-        target.GetComponent<ChampionController>().healthBar.value = target.GetComponent<ChampionController>().health;
+        float physicalDmgReduction = ((float)targetController.armor / 100); // physical dmg reduction from target armor
+        int dmg = attackDamage - (int)(attackDamage * physicalDmgReduction);
 
-        if (target.GetComponent<ChampionController>().health <= 0)
+        targetController.health -= dmg;
+        targetController.healthBar.value = targetController.health;
+
+        if (targetController.health <= 0)
         {
             OnTargetDead();
         }

@@ -1,8 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
+using UnityEngine.UI;
 
 public enum ChampionState { Attacking, Moving, Idle};
+public enum ChampionAttackType { Melee, Range };
+
+public enum Race { Human, Orc, Elf };
+public enum Class { Warrior, Archer, Mage };
 
 public class Champion : MonoBehaviour
 {
@@ -19,32 +25,12 @@ public class Champion : MonoBehaviour
     //utility vars
     public float movementSpeed;
 
-    public void InitChampion()
-    {
-        health = 100;
-        movementSpeed = 1;
+    //spec vars
+    public Class _class;
+    public Race _race;
 
-        InitializingChampionAttacksByType();
-    }
-
-    void InitializingChampionAttacksByType()
+    public void InitChampion(string name)
     {
-        if (attackType == ChampionAttackType.Melee)
-        {
-            attackDamage = 40;
-            attackSpeed = 0.6f;
-            attackRange = 1.2f;
-        }
-        else if (attackType == ChampionAttackType.Range)
-        {
-            attackDamage = 5;
-            attackSpeed = 1f;
-            attackRange = 4f;
-        }
-    }
 
-    public Tile GetCurrentTile()
-    {
-        return TacticsMove.GetChampionTile(gameObject);
     }
 }
