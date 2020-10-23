@@ -38,9 +38,9 @@ public class TacticsMove : MonoBehaviour
         championsStartRoundPositions = new List<Vector3>();
         enemiesStartRoundPositions = new List<Vector3>();
 
-        GameObject tempChamp = CreateChampion("Seraphim", new Vector3(6, 1.4f, 0));
-        champions.Add(tempChamp);
-        tempChamp.AddComponent<Seraphim>().GetComponent<Seraphim>().InitChampion();
+        CreateChampion("Seraphim", new Vector3(6, 1.4f, 0));
+        CreateChampion("Necromancer", new Vector3(4, 1.4f, 2));
+        CreateChampion("Lelolas", new Vector3(8, 1.4f, 1));
     }
     private void Update()
     {
@@ -237,6 +237,10 @@ public class TacticsMove : MonoBehaviour
     {
         GameObject champ = GameObject.CreatePrimitive(PrimitiveType.Capsule);
 
+        // adding the correct script to the object of type name
+        Type champType = Type.GetType(name);
+        champ.AddComponent(champType);
+
         champ.name = name;
         champ.tag = "Champion";
 
@@ -345,6 +349,7 @@ public class TacticsMove : MonoBehaviour
             }
         }
 
+        champions.Add(champ);
         return champ;
     }
 }

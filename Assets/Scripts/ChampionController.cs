@@ -28,7 +28,6 @@ public class ChampionController : Champion
         distanceToTarget = Mathf.Infinity;
         halfHeight = GetComponent<Collider>().bounds.extents.y;
         isDead = false;
-
     }
 
     public Tile GetCurrentTile()

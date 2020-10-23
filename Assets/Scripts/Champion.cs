@@ -28,9 +28,4 @@ public class Champion : MonoBehaviour
     //spec vars
     public Class _class;
     public Race _race;
-
-    public void InitChampion(string name)
-    {
-
-    }
 }
