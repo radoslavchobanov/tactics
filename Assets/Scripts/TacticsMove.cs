@@ -12,7 +12,11 @@ public enum GameState { BuyingRound, FightingRound };
 
 public class TacticsMove : MonoBehaviour
 {
-//tiles variables
+    public Button aragornButton;
+    public Button sarumanButton;
+    public Button legolasButton;
+
+    //tiles variables
     public static GameObject[] map; // array with all the tiles
 
 //players variables 
@@ -29,6 +33,10 @@ public class TacticsMove : MonoBehaviour
 
     void Start()
     {
+        aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
+        sarumanButton.onClick.AddListener(() => { CreateChampion("Saruman", new Vector3(5, 1.4f, 0), Color.white); });
+        legolasButton.onClick.AddListener(() => { CreateChampion("Legolas", new Vector3(6, 1.4f, 0), Color.yellow); });
+
         map = GameObject.FindGameObjectsWithTag("Tile");
         
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -37,21 +45,19 @@ public class TacticsMove : MonoBehaviour
         champions = new List<GameObject>();
         championsStartRoundPositions = new List<Vector3>();
         enemiesStartRoundPositions = new List<Vector3>();
-
-        CreateChampion("Seraphim", new Vector3(6, 1.4f, 0));
-        CreateChampion("Necromancer", new Vector3(4, 1.4f, 2));
-        CreateChampion("Lelolas", new Vector3(8, 1.4f, 1));
     }
     private void Update()
     {
-        if (ChampionsWin()) // pri pobeda na championite
+        if (TacticsMove.gameState == GameState.FightingRound)
         {
-            OnWonRound();
-        }
-
-        if (EnemiesWin()) // pri pobeda na enemy-tata
-        {
-            OnLostRound();
+            if (ChampionsWin()) // pri pobeda na championite
+            {
+                OnWonRound();
+            }
+            if (EnemiesWin()) // pri pobeda na enemy-tata
+            {
+                OnLostRound();
+            }
         }
     }
 
@@ -205,7 +211,7 @@ public class TacticsMove : MonoBehaviour
         if (champions.Count == 0)
         {
             print("No champions");
-            return false;
+            return true;
         }
 
         bool allChampionsDead = true;
@@ -233,7 +239,7 @@ public class TacticsMove : MonoBehaviour
         ChangeEnemiesState(ChampionState.Idle);
     }
 
-    public GameObject CreateChampion(string name, Vector3 startingPos)
+    public GameObject CreateChampion(string name, Vector3 startingPos, Color color) // creating champion NAME on given position
     {
         GameObject champ = GameObject.CreatePrimitive(PrimitiveType.Capsule);
 
@@ -247,7 +253,7 @@ public class TacticsMove : MonoBehaviour
         champ.transform.position = startingPos;
         champ.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
 
-        champ.GetComponent<Renderer>().material.color = Color.red;
+        champ.GetComponent<Renderer>().material.color = color;
 
         GameObject sliderCanvas = CreateCanvas(); // canvas for the slider
         GameObject healthbarSlider = CreateSlider(); // slider for the healthbar

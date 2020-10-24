@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seraphim : Champion
+public class Saruman : Champion
 {
     private ChampionController controller;
     public void InitChampion()
     {
-        attackDamage = 200;
-        attackSpeed = 0.6f;
-        attackRange = 1.2f;
-        attackType = ChampionAttackType.Melee;
-        health = 1200;
-        armor = 50;
+        attackDamage = 100;
+        attackSpeed = 0.9f;
+        attackRange = 4f;
+        attackType = ChampionAttackType.Range;
+        health = 800;
+        armor = 20;
         movementSpeed = 1.5f;
 
-        _class = Class.Warrior;
-        _race = Race.Human;
+        _class = Class.Mage;
+        _race = Race.Orc;
     }
     public void Start()
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lelolas : Champion
+public class Legolas : Champion
 {
     private ChampionController controller;
     public void InitChampion()

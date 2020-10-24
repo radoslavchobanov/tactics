@@ -26,7 +26,7 @@ public class ChampionController : Champion
     {
         target = null;
         distanceToTarget = Mathf.Infinity;
-        halfHeight = GetComponent<Collider>().bounds.extents.y;
+        halfHeight = 0.9f; /*GetComponent<Collider>().bounds.extents.y;*/ // get collidera nqkuv put vrushta 1 vmesto 0.9f i stava greshka pri vectora, nikva ideq zashto
         isDead = false;
     }
 
