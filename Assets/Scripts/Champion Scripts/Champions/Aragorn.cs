@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Saruman : Champion
+public class Aragorn : Champion
 {
     private ChampionController controller;
     public void InitChampion()
     {
-        attackDamage = 100;
-        attackSpeed = 0.9f;
-        attackRange = 4f;
-        attackType = ChampionAttackType.Range;
-        health = 800;
-        armor = 20;
+        attackDamage = 200;
+        attackSpeed = 0.6f;
+        attackRange = 2f;
+        attackType = ChampionAttackType.Melee;
+        health = 1200;
+        armor = 50;
         movementSpeed = 1.5f;
 
-        _class = Class.Mage;
-        _race = Race.Orc;
+        _class = Class.Warrior;
+        _race = Race.Human;
     }
     public void Start()
     {

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,22 +9,23 @@ public enum GameState { BuyingRound, FightingRound };
 
 public class TacticsMove : MonoBehaviour
 {
+    //shop vars
     public Button aragornButton;
     public Button sarumanButton;
     public Button legolasButton;
 
-    //tiles variables
+    //tile variables
     public static GameObject[] map; // array with all the tiles
 
-//players variables 
+    //player variables 
     public static List<GameObject> champions; // list with all the champions on the board
     public static List<Vector3> championsStartRoundPositions; // list with all the starting positions of the champions
 
-//enemy variables
+    //enemy variables
     public static GameObject[] enemies; // list with all the enemies on the board
     public static List<Vector3> enemiesStartRoundPositions; // list with all the starting positions of the enemies
 
-//game variables
+    //game variables
     public static GameState gameState; // type of the round - buying or fighting
     public static int numberOfRound; // the number of rounds from the beginning
 
@@ -38,7 +36,7 @@ public class TacticsMove : MonoBehaviour
         legolasButton.onClick.AddListener(() => { CreateChampion("Legolas", new Vector3(6, 1.4f, 0), Color.yellow); });
 
         map = GameObject.FindGameObjectsWithTag("Tile");
-        
+
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         numberOfRound = 0;
@@ -63,7 +61,7 @@ public class TacticsMove : MonoBehaviour
 
     public static Tile GetChampionTile(GameObject champion) // getting the current tile of a champion
     {
-        RaycastHit hit; 
+        RaycastHit hit;
         Tile tile = null;
 
         if (Physics.Raycast(champion.transform.position, -Vector3.up, out hit, 1))
@@ -107,11 +105,11 @@ public class TacticsMove : MonoBehaviour
         foreach (GameObject obj in champions)
         {
             championsStartRoundPositions.Add(obj.transform.position);
-        }    
+        }
     }
     public static void ResetChampionsForBuyRound() // resetting the champions for buying round
     {
-        for (int i=0; i<champions.Count; ++i)
+        for (int i = 0; i < champions.Count; ++i)
         {
             GameObject currChamp = champions.ElementAt(i);
             if (currChamp == null)

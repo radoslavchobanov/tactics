@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Aragorn : Champion
+public class Legolas : Champion
 {
     private ChampionController controller;
     public void InitChampion()
     {
-        attackDamage = 200;
-        attackSpeed = 0.6f;
-        attackRange = 1.2f;
-        attackType = ChampionAttackType.Melee;
-        health = 1200;
-        armor = 50;
+        attackDamage = 150;
+        attackSpeed = 1f;
+        attackRange = 6.6f;
+        attackType = ChampionAttackType.Range;
+        health = 860;
+        armor = 25;
         movementSpeed = 1.5f;
 
-        _class = Class.Warrior;
-        _race = Race.Human;
+        _class = Class.Archer;
+        _race = Race.Elf;
     }
     public void Start()
     {

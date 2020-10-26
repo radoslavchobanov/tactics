@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
     //main variables
     public bool homeTile = false;
     public bool walkable = true;
-    public bool selectable = true;
+    public bool selectable = false;
     public bool pointed = false;
     public bool isPlayerOn = false;
     public Tile parent = null;
@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.transform.position.z < 6)
+        if (gameObject.transform.position.z < 7)
             homeTile = true;
     }
 

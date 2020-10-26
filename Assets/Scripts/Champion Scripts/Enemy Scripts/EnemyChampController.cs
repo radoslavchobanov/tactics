@@ -9,7 +9,7 @@ public class EnemyChampController : ChampionController
     {
         attackDamage = 600;
         attackSpeed = 0.2f;
-        attackRange = 1.1f;
+        attackRange = 2f;
         attackType = ChampionAttackType.Melee;
         healthBar.maxValue = 10000;
         healthBar.value = healthBar.maxValue;
