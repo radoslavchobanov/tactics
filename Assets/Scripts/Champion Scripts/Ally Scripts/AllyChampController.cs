@@ -16,7 +16,7 @@ public class AllyChampController : ChampionController
     {
         //controller variables
         previousPointedTile = GetCurrentTile();
-        currentPlacedTile = GetCurrentTile();
+        currentPlacedTile = null;
 
         //champ flags
         selected = false;
@@ -26,7 +26,7 @@ public class AllyChampController : ChampionController
 
     void Update()
     {
-        switch (TacticsMove.gameState)
+        switch (TacticsMove.singleton.gameState)
         {
             case GameState.FightingRound:
                 if (championState == ChampionState.Moving)
@@ -48,23 +48,27 @@ public class AllyChampController : ChampionController
     
     private void OnMouseDown()
     {
-        if (TacticsMove.gameState == GameState.BuyingRound)
+        if (TacticsMove.singleton.gameState == GameState.BuyingRound)
         {
-            if (selected)
+            if (selected) // when champ is selected/being dragged and we click the mouse
             {
                 selected = false;
 
-                if (GetCurrentTile() != null && GetCurrentTile().homeTile)
+                if (GetCurrentTile() != null && GetCurrentTile().isHomeBattlefieldTile)
+                {
                     gameObject.transform.position = new Vector3(GetCurrentTile().transform.position.x, gameObject.transform.position.y, GetCurrentTile().transform.position.z);
+
+                    SynergyUpdate();
+                }
                 else
                     gameObject.transform.position = new Vector3(currentPlacedTile.transform.position.x, gameObject.transform.position.y, currentPlacedTile.transform.position.z);
 
-                TacticsMove.ClearSelectedTiles();
+                TacticsMove.singleton.ClearSelectedTiles();
             }
-            else if (!selected)
+            else if (!selected) // when there is no champ selected and we click over a champ
             {
                 selected = true;
-                TacticsMove.MakeHomeTilesSelectable();
+                TacticsMove.singleton.MakeHomeTilesSelectable();
                 currentPlacedTile = GetCurrentTile();
             }
         }
@@ -74,17 +78,17 @@ public class AllyChampController : ChampionController
         if (GetCurrentTile() == null)
             return;
 
-        if (!GetCurrentTile().homeTile)
+        if (!GetCurrentTile().isHomeBattlefieldTile)
             return;
 
-        GetCurrentTile().pointed = true;
+        GetCurrentTile().isPointed = true;
     }
     private void OnMouseExit()
     {
         if (GetCurrentTile() == null)
             return;
 
-        GetCurrentTile().pointed = false;
+        GetCurrentTile().isPointed = false;
     }
 
     public void MakeCurrentTilePointedAndPreviousUnpointed()
@@ -94,13 +98,34 @@ public class AllyChampController : ChampionController
 
         if (previousPointedTile != GetCurrentTile())
         {
-            previousPointedTile.pointed = false;
-            GetCurrentTile().pointed = true;
+            previousPointedTile.isPointed = false;
+            GetCurrentTile().isPointed = true;
             previousPointedTile = GetCurrentTile();
         }
         else
         {
-            GetCurrentTile().pointed = true;
+            GetCurrentTile().isPointed = true;
+        }
+    }
+    public void SynergyUpdate()
+    {
+        if (currentPlacedTile.isBench && GetCurrentTile().isBench)
+        {
+            // nothing happens, no synergies for update
+        }
+        else if (currentPlacedTile.isBench && GetCurrentTile().isHomeBattlefieldTile)
+        {
+            // to update the synergies for new champ on the battlefield
+            TacticsMove.singleton.OnChampionEntersBattlefield(gameObject.GetComponent<Champion>());
+        }
+        else if (currentPlacedTile.isHomeBattlefieldTile && GetCurrentTile().isBench)
+        {
+            // to update the synergies for champ left the battlefield
+            TacticsMove.singleton.OnChampionLeavesBattlefield(gameObject.GetComponent<Champion>());
+        }
+        else if (currentPlacedTile.isHomeBattlefieldTile && GetCurrentTile().isHomeBattlefieldTile)
+        {
+            // nothing happens, no synergies for update
         }
     }
 }       

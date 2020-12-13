@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChampionController : Champion
 {
     //controller vars
-    public GameObject target; // focused enemy  
+    public GameObject target; // focused enemy
     public Slider healthBar;
     public float distanceToTarget;
     public ChampionState championState;
@@ -14,7 +14,7 @@ public class ChampionController : Champion
     public Stack<Tile> shortestPath = new Stack<Tile>();
     protected float timeForNextAttack = 0;
 
-    private float halfHeight = 0;
+    private static float halfHeight = 0;
     public Tile targetTile = null;
 
     // flags
@@ -32,7 +32,7 @@ public class ChampionController : Champion
 
     public Tile GetCurrentTile()
     {
-        return TacticsMove.GetChampionTile(gameObject);
+        return TacticsMove.singleton.GetChampionTile(gameObject);
     }
 
     public void CalculateDistanceToTarget()
@@ -183,7 +183,7 @@ public class ChampionController : Champion
         Tile startTile = GetCurrentTile();
         Tile targetTile = target.GetComponent<ChampionController>().GetCurrentTile();
 
-        TacticsMove.GetAdjacentTiles(targetTile);
+        TacticsMove.singleton.GetAdjacentTiles(targetTile);
 
         List<Tile> openList = new List<Tile>();
         List<Tile> closedList = new List<Tile>();

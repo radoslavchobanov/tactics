@@ -13,16 +13,16 @@ public class GameController : MonoBehaviour
     }
     void changeRoundState()
     {
-        if (TacticsMove.gameState == GameState.BuyingRound)
+        if (TacticsMove.singleton.gameState == GameState.BuyingRound)
         {
-            TacticsMove.gameState = GameState.FightingRound; // fight round begin
+            TacticsMove.singleton.gameState = GameState.FightingRound; // fight round begin
 
             AtBeginningOfFightingRoundActions();
         }
 
-        else if (TacticsMove.gameState == GameState.FightingRound)
+        else if (TacticsMove.singleton.gameState == GameState.FightingRound)
         {
-            TacticsMove.gameState = GameState.BuyingRound; // buy round begin
+            TacticsMove.singleton.gameState = GameState.BuyingRound; // buy round begin
 
             AtBeginningOfBuyingRoundActions();
         }
@@ -30,22 +30,22 @@ public class GameController : MonoBehaviour
 
     private void CurrentRound()
     {
-        TacticsMove.numberOfRound += 1;
-        print("round - " + TacticsMove.numberOfRound);
+        TacticsMove.singleton.numberOfRound += 1;
+        print("round - " + TacticsMove.singleton.numberOfRound);
     } // increasing the round counter and printing the current round
 
-    private void AtBeginningOfFightingRoundActions()
+    private void AtBeginningOfFightingRoundActions() // do that at the beginning of every fighting round
     {
-        CurrentRound(); // at the beginning of each fighting round, add 1 to rounds and print curr round.
-        TacticsMove.SaveChampionsStartRoundPositions();
-        TacticsMove.SaveEnemiesStartRoundPositions();
-        TacticsMove.ChangeChampionsState(ChampionState.Moving);
-        TacticsMove.ChangeEnemiesState(ChampionState.Moving);
-    } // do that at the beginning of every fighting round
-    private void AtBeginningOfBuyingRoundActions()
+        TacticsMove.singleton.SaveChampionsStartRoundPositions();
+        TacticsMove.singleton.SaveEnemiesStartRoundPositions();
+        TacticsMove.singleton.ChangeChampionsState(ChampionState.Moving);
+        TacticsMove.singleton.ChangeEnemiesState(ChampionState.Moving);
+    } 
+    private void AtBeginningOfBuyingRoundActions() // do that at the beginning of every buying round
     {
-        TacticsMove.ResetChampionsForBuyRound();
-        TacticsMove.ResetEnemies();
-        TacticsMove.championsStartRoundPositions.Clear();
-    } // do that at the beginning of every buying round
+        CurrentRound(); // at the beginning of each buying round, add 1 to rounds and print curr round.
+        TacticsMove.singleton.ResetChampionsForBuyRound();
+        TacticsMove.singleton.ResetEnemies();
+        TacticsMove.singleton.championsStartRoundPositions.Clear();
+    } 
 }

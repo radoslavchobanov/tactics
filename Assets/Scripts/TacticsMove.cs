@@ -3,50 +3,78 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public enum GameState { BuyingRound, FightingRound };
 
 
 public class TacticsMove : MonoBehaviour
 {
-    //shop vars
-    public Button aragornButton;
-    public Button sarumanButton;
-    public Button legolasButton;
+    //singleton
+    public static TacticsMove singleton;
+
+    //UI shop vars
+    public Button aragornButton, sarumanButton, legolasButton;
+
+    //UI synergy vars
+    public Text humanText, orcText, elfText, warriorText, archerText, mageText;
 
     //tile variables
-    public static GameObject[] map; // array with all the tiles
+    public GameObject[] map; // array with all the tiles
 
-    //player variables 
-    public static List<GameObject> champions; // list with all the champions on the board
-    public static List<Vector3> championsStartRoundPositions; // list with all the starting positions of the champions
+    //champion variables 
+    public List<GameObject> champions; // list with all the ally champions on the screen
+    public List<GameObject> championsOnBench; // list with all the ally champions on the bench
+    public List<GameObject> championsOnBoard; // list with all the ally champions on the board
+    public List<Vector3> championsStartRoundPositions; // list with all the starting positions of the champions
 
     //enemy variables
-    public static GameObject[] enemies; // list with all the enemies on the board
-    public static List<Vector3> enemiesStartRoundPositions; // list with all the starting positions of the enemies
+    public GameObject[] enemies; // list with all the enemies on the board
+    public List<Vector3> enemiesStartRoundPositions; // list with all the starting positions of the enemies
 
     //game variables
-    public static GameState gameState; // type of the round - buying or fighting
-    public static int numberOfRound; // the number of rounds from the beginning
+    public GameState gameState; // type of the round - buying or fighting
+    public int numberOfRound; // the number of rounds from the beginning
+    public SynergyController synergyController; // controlls the synergy of the allied champions and visuallise it on the screen
+
+    private void Awake()
+    {
+        if (singleton != null && singleton != this)
+            Destroy(this.gameObject);
+        else
+            singleton = this;
+    }
 
     void Start()
     {
+        //UI shop vars
         aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
         sarumanButton.onClick.AddListener(() => { CreateChampion("Saruman", new Vector3(5, 1.4f, 0), Color.white); });
         legolasButton.onClick.AddListener(() => { CreateChampion("Legolas", new Vector3(6, 1.4f, 0), Color.yellow); });
 
+        //UI synergy vars | all set
+
+        //tile variables
         map = GameObject.FindGameObjectsWithTag("Tile");
 
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        numberOfRound = 0;
+        //player variables 
         champions = new List<GameObject>();
+        championsOnBench = new List<GameObject>();
+        championsOnBoard = new List<GameObject>();
         championsStartRoundPositions = new List<Vector3>();
+
+        //enemy variables
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         enemiesStartRoundPositions = new List<Vector3>();
+
+        //game variables
+        gameState = new GameState();
+        numberOfRound = 0;
+        synergyController = new SynergyController();
     }
     private void Update()
     {
-        if (TacticsMove.gameState == GameState.FightingRound)
+        if (gameState == GameState.FightingRound)
         {
             if (ChampionsWin()) // pri pobeda na championite
             {
@@ -57,9 +85,13 @@ public class TacticsMove : MonoBehaviour
                 OnLostRound();
             }
         }
+        else if (gameState == GameState.BuyingRound)
+        {
+
+        }
     }
 
-    public static Tile GetChampionTile(GameObject champion) // getting the current tile of a champion
+    public Tile GetChampionTile(GameObject champion) // getting the current tile of a champion
     {
         RaycastHit hit;
         Tile tile = null;
@@ -71,27 +103,27 @@ public class TacticsMove : MonoBehaviour
 
         return tile;
     }
-    public static void MakeHomeTilesSelectable()
+    public void MakeHomeTilesSelectable()
     {
         foreach (GameObject tileObject in map)
         {
             Tile tile = tileObject.GetComponent<Tile>();
 
-            if (tile.homeTile == true)
-                tile.selectable = true;
+            if (tile.isHomeBattlefieldTile == true)
+                tile.isSelectable = true;
         }
     }
-    public static void ClearSelectedTiles()
+    public void ClearSelectedTiles()
     {
         foreach (GameObject tileObject in map)
         {
             Tile tile = tileObject.GetComponent<Tile>();
 
-            if (tile.selectable)
-                tile.selectable = false;
+            if (tile.isSelectable)
+                tile.isSelectable = false;
         }
     }
-    public static void GetAdjacentTiles(Tile targetTile) // getting and storing the neighbor of every tile on the map in adjacent list
+    public void GetAdjacentTiles(Tile targetTile) // getting and storing the neighbor of every tile on the map in adjacent list
     {
         foreach (GameObject tile in map)
         {
@@ -100,14 +132,14 @@ public class TacticsMove : MonoBehaviour
         }
     }
 
-    public static void SaveChampionsStartRoundPositions() // saving position of each champion in array
+    public void SaveChampionsStartRoundPositions() // saving position of each champion in array
     {
         foreach (GameObject obj in champions)
         {
             championsStartRoundPositions.Add(obj.transform.position);
         }
     }
-    public static void ResetChampionsForBuyRound() // resetting the champions for buying round
+    public void ResetChampionsForBuyRound() // resetting the champions for buying round
     {
         for (int i = 0; i < champions.Count; ++i)
         {
@@ -134,14 +166,14 @@ public class TacticsMove : MonoBehaviour
             currChamp.GetComponent<AllyChampController>().shortestPath.Clear();
         }
     }
-    public static void ChangeChampionsState(ChampionState state) // changing the champion state to smth
+    public void ChangeChampionsState(ChampionState state) // changing the champion state to smth
     {
         foreach (GameObject obj in champions)
         {
             obj.GetComponent<AllyChampController>().championState = state;
         }
     }
-    public static bool ChampionsWin() // checking if you win the round
+    public bool ChampionsWin() // checking if you win the round
     {
         if (enemies == null)
         {
@@ -163,14 +195,14 @@ public class TacticsMove : MonoBehaviour
         return allEnemiesDead;
     }
 
-    public static void SaveEnemiesStartRoundPositions() // saving position of each enemy in array
+    public void SaveEnemiesStartRoundPositions() // saving position of each enemy in array
     {
         foreach (GameObject obj in enemies)
         {
             enemiesStartRoundPositions.Add(obj.transform.position);
         }
     }
-    public static void ResetEnemies() // resetting the enemies for buying round
+    public void ResetEnemies() // resetting the enemies for buying round
     {
         for (int i = 0; i < enemies.Length; ++i)
         {
@@ -197,14 +229,14 @@ public class TacticsMove : MonoBehaviour
             currEnemy.GetComponent<EnemyChampController>().shortestPath.Clear();
         }
     }
-    public static void ChangeEnemiesState(ChampionState state) // changing the enemy state to smth
+    public void ChangeEnemiesState(ChampionState state) // changing the enemy state to smth
     {
         foreach (GameObject obj in enemies)
         {
             obj.GetComponent<EnemyChampController>().championState = state;
         }
     }
-    public static bool EnemiesWin() // checking if you lose the round
+    public bool EnemiesWin() // checking if you lose the round
     {
         if (champions.Count == 0)
         {
@@ -226,18 +258,18 @@ public class TacticsMove : MonoBehaviour
         return allChampionsDead;
     }
 
-    public static void OnWonRound() // do that when win a round
+    public void OnWonRound() // do that when win a round
     {
         print("you win");
         ChangeChampionsState(ChampionState.Idle);
     }
-    public static void OnLostRound() // do that when lose a round
+    public void OnLostRound() // do that when lose a round
     {
         print("enemies win");
         ChangeEnemiesState(ChampionState.Idle);
     }
 
-    public GameObject CreateChampion(string name, Vector3 startingPos, Color color) // creating champion NAME on given position
+    public GameObject CreateChampion(string name, Vector3 startingPos, Color color) // creating champion NAME on given position with given color
     {
         GameObject champ = GameObject.CreatePrimitive(PrimitiveType.Capsule);
 
@@ -355,5 +387,27 @@ public class TacticsMove : MonoBehaviour
 
         champions.Add(champ);
         return champ;
+    }
+
+    public void OnChampionEntersBattlefield(Champion champ) // do that when new champ enters the battlefield
+    {
+        synergyController.AddIntoSyngeries(champ);
+        UpdateVisualTextSynergies();
+    }
+    public void OnChampionLeavesBattlefield(Champion champ) // do that when champion leaves the battlefield
+    {
+        synergyController.RemoveFromSynergies(champ);   
+        UpdateVisualTextSynergies();
+    }
+
+    public void UpdateVisualTextSynergies()
+    {
+        humanText.text = "Humans - " + synergyController.HumanCounter;
+        orcText.text = "Orcs - " + synergyController.OrcCounter;
+        elfText.text = "Elfs - " + synergyController.ElfCounter;
+
+        warriorText.text = "Warriors - " + synergyController.WarriorCounter;
+        archerText.text = "Archers - " + synergyController.ArcherCounter;
+        mageText.text = "Mages - " + synergyController.MageCounter;
     }
 }

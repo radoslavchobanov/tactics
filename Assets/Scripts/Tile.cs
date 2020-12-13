@@ -1,18 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tile : MonoBehaviour
 {
     //main variables
-    public bool homeTile = false;
-    public bool walkable = true;
-    public bool selectable = false;
-    public bool pointed = false;
+    public bool isHomeBattlefieldTile = false;
+    public bool isWalkable = true;
+    public bool isSelectable = false;
+    public bool isPointed = false;
     public bool isPlayerOn = false;
     public Tile parent = null;
     public bool inShortestPath = false;
+    public bool isBench = false;
 
     public List<Tile> adjacentTileList = new List<Tile>();
 
@@ -25,17 +28,20 @@ public class Tile : MonoBehaviour
     void Start()
     {
         if (gameObject.transform.position.z < 7)
-            homeTile = true;
+            isHomeBattlefieldTile = true;
+
+        if (gameObject.transform.position.z == 0)
+            isBench = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pointed)
+        if (isPointed)
         {
             GetComponent<Renderer>().material.color = Color.gray;
         }
-        else if (selectable)
+        else if (isSelectable)
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
@@ -51,14 +57,15 @@ public class Tile : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        if (homeTile)
-            pointed = true;
+        if (isHomeBattlefieldTile)
+            isPointed = true;
     }
     private void OnMouseExit()
     {
-        if (pointed)
-            pointed = false;
+        if (isPointed)
+            isPointed = false;
     }
+
     public void Reset()
     {
         adjacentTileList.Clear();
@@ -97,5 +104,19 @@ public class Tile : MonoBehaviour
     {
         RaycastHit hit;
         return (!Physics.Raycast(gameObject.transform.position, Vector3.up, out hit, 1));
+    }
+
+    public Champion GetChampionOnTile()
+    {
+        RaycastHit hit;
+        Physics.Raycast(gameObject.transform.position, Vector3.up, out hit, 1);
+        try
+        {
+            return hit.collider.gameObject.GetComponent<Champion>();
+        }
+        catch (NullReferenceException)
+        {
+            return null;
+        }
     }
 }

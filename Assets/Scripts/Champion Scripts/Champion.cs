@@ -10,6 +10,8 @@ public enum ChampionAttackType { Melee, Range };
 public enum Race { Human, Orc, Elf };
 public enum Class { Warrior, Archer, Mage };
 
+public enum Buff { Human3, Human6, Orc3, Orc6 };
+
 public class Champion : MonoBehaviour
 {
     //attacking vars
@@ -24,6 +26,7 @@ public class Champion : MonoBehaviour
 
     //utility vars
     public float movementSpeed;
+    public List<Buff> buffs = new List<Buff>();
 
     //spec vars
     public Class _class;

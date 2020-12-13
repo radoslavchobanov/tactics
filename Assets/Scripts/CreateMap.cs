@@ -16,7 +16,7 @@ public class CreateMap : MonoBehaviour
 
     Vector3 startPos;
 
-    private void Start()
+    private void Awake()
     {
         AddGap();
         CalcStartPos();

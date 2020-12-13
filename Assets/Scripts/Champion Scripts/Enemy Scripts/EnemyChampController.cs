@@ -29,7 +29,7 @@ public class EnemyChampController : ChampionController
     
     void Update()
     {
-        switch (TacticsMove.gameState)
+        switch (TacticsMove.singleton.gameState)
         {
             case GameState.FightingRound:
                 if (championState == ChampionState.Moving)
