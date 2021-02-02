@@ -28,10 +28,15 @@ public class Tile : MonoBehaviour
     void Start()
     {
         if (gameObject.transform.position.z < 7)
+        {
             isHomeBattlefieldTile = true;
+        }
 
         if (gameObject.transform.position.z == 0)
+        {
             isBench = true;
+            isHomeBattlefieldTile = false;
+        }
     }
 
     // Update is called once per frame
