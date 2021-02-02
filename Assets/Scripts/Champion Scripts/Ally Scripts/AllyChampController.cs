@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AllyChampController : ChampionController
 {
@@ -58,7 +59,20 @@ public class AllyChampController : ChampionController
                 {
                     gameObject.transform.position = new Vector3(GetCurrentTile().transform.position.x, gameObject.transform.position.y, GetCurrentTile().transform.position.z);
 
-                    SynergyUpdate();
+                    //SynergyUpdate();
+                    if (currentPlacedTile.isBench && GetCurrentTile().isHomeBattlefieldTile)
+                    {
+                        // to update the synergies for new champ on the battlefield
+
+                        // New champ on the battlefield event calling!
+                        TacticsMove.singleton.ChampionEnteredBattlefield.Invoke();
+
+                    }
+                    else if (currentPlacedTile.isHomeBattlefieldTile && GetCurrentTile().isBench)
+                    {
+                        // to update the synergies for champ left the battlefield
+                    }
+
                 }
                 else
                     gameObject.transform.position = new Vector3(currentPlacedTile.transform.position.x, gameObject.transform.position.y, currentPlacedTile.transform.position.z);
@@ -105,27 +119,6 @@ public class AllyChampController : ChampionController
         else
         {
             GetCurrentTile().isPointed = true;
-        }
-    }
-    public void SynergyUpdate()
-    {
-        if (currentPlacedTile.isBench && GetCurrentTile().isBench)
-        {
-            // nothing happens, no synergies for update
-        }
-        else if (currentPlacedTile.isBench && GetCurrentTile().isHomeBattlefieldTile)
-        {
-            // to update the synergies for new champ on the battlefield
-            TacticsMove.singleton.OnChampionEntersBattlefield(gameObject.GetComponent<Champion>());
-        }
-        else if (currentPlacedTile.isHomeBattlefieldTile && GetCurrentTile().isBench)
-        {
-            // to update the synergies for champ left the battlefield
-            TacticsMove.singleton.OnChampionLeavesBattlefield(gameObject.GetComponent<Champion>());
-        }
-        else if (currentPlacedTile.isHomeBattlefieldTile && GetCurrentTile().isHomeBattlefieldTile)
-        {
-            // nothing happens, no synergies for update
         }
     }
 }       
