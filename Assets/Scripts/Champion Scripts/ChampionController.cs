@@ -11,7 +11,9 @@ public class ChampionController : Champion
     public float distanceToTarget;
     public ChampionState championState;
 
+    //A* path
     public Stack<Tile> shortestPath = new Stack<Tile>();
+
     protected float timeForNextAttack = 0;
 
     private static float halfHeight = 0;
