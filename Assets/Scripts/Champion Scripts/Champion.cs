@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 
-public enum ChampionState { Attacking, Moving, Idle};
+public enum ChampionState { Attacking, Moving, Idle, Dragged};
 public enum ChampionAttackType { Melee, Range };
 
 public enum Race { Human, Orc, Elf };
@@ -31,4 +31,7 @@ public class Champion : MonoBehaviour
     //spec vars
     public Class _class;
     public Race _race;
+
+    //flags
+    public bool haveBuffForUpdate = false;
 }
