@@ -7,35 +7,48 @@ using UnityEngine.Events;
 
 public enum GameState { BuyingRound, FightingRound };
 
-
 public class TacticsMove : MonoBehaviour
 {
-    //singleton
+    //singleton -----------------------------------------------------------
     public static TacticsMove singleton;
+    //---------------------------------------------------------------------
 
-    //UI shop vars
+    //Events
+
+    public UnityEvent ChampionEnteredBattlefield;
+
+    public UnityEvent SynergiesUpdated;
+    //
+
+    //UI shop vars --------------------------------------------------------
     public Button aragornButton, sarumanButton, legolasButton;
+    //---------------------------------------------------------------------
 
-    //UI synergy vars
+    //UI synergy vars for UI synergy text panel11 -------------------------
     public Text humanText, orcText, elfText, warriorText, archerText, mageText;
+    //---------------------------------------------------------------------
 
-    //tile variables
+    //tile variables ------------------------------------------------------
     public GameObject[] map; // array with all the tiles
+    //---------------------------------------------------------------------
 
-    //champion variables 
+    //champion variables --------------------------------------------------
     public List<GameObject> champions; // list with all the ally champions on the screen
     public List<GameObject> championsOnBench; // list with all the ally champions on the bench
     public List<GameObject> championsOnBoard; // list with all the ally champions on the board
     public List<Vector3> championsStartRoundPositions; // list with all the starting positions of the champions
+    //---------------------------------------------------------------------
 
-    //enemy variables
+    //enemy variables -----------------------------------------------------
     public GameObject[] enemies; // list with all the enemies on the board
     public List<Vector3> enemiesStartRoundPositions; // list with all the starting positions of the enemies
+    //---------------------------------------------------------------------
 
-    //game variables
+    //game variables ------------------------------------------------------
     public GameState gameState; // type of the round - buying or fighting
     public int numberOfRound; // the number of rounds from the beginning
-    public SynergyController synergyController; // controlls the synergy of the allied champions and visuallise it on the screen
+    //public SynergyController synergyController; // controlls the synergy of the allied champions and visuallise it on the screen
+    //---------------------------------------------------------------------
 
     private void Awake()
     {
@@ -47,6 +60,10 @@ public class TacticsMove : MonoBehaviour
 
     void Start()
     {
+        // Events init
+        ChampionEnteredBattlefield.AddListener(() => UpdateVisualTextSynergies());
+        SynergiesUpdated.AddListener(() => print("Synergies Updated"));
+
         //UI shop vars
         aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
         sarumanButton.onClick.AddListener(() => { CreateChampion("Saruman", new Vector3(5, 1.4f, 0), Color.white); });
@@ -70,7 +87,6 @@ public class TacticsMove : MonoBehaviour
         //game variables
         gameState = new GameState();
         numberOfRound = 0;
-        synergyController = new SynergyController();
     }
     private void Update()
     {
@@ -389,25 +405,16 @@ public class TacticsMove : MonoBehaviour
         return champ;
     }
 
-    public void OnChampionEntersBattlefield(Champion champ) // do that when new champ enters the battlefield
-    {
-        synergyController.AddIntoSyngeries(champ);
-        UpdateVisualTextSynergies();
-    }
-    public void OnChampionLeavesBattlefield(Champion champ) // do that when champion leaves the battlefield
-    {
-        synergyController.RemoveFromSynergies(champ);   
-        UpdateVisualTextSynergies();
-    }
-
     public void UpdateVisualTextSynergies()
     {
-        humanText.text = "Humans - " + synergyController.HumanCounter;
-        orcText.text = "Orcs - " + synergyController.OrcCounter;
-        elfText.text = "Elfs - " + synergyController.ElfCounter;
+        print("UpdateVisualTextSynergies");
 
-        warriorText.text = "Warriors - " + synergyController.WarriorCounter;
-        archerText.text = "Archers - " + synergyController.ArcherCounter;
-        mageText.text = "Mages - " + synergyController.MageCounter;
+        humanText.text = "Humans - " + SynergyController.singleton.HumanCounter;
+        orcText.text = "Orcs - " + SynergyController.singleton.OrcCounter;
+        elfText.text = "Elfs - " + SynergyController.singleton.ElfCounter;    
+
+        warriorText.text = "Warriors - " + SynergyController.singleton.WarriorCounter;
+        archerText.text = "Archers - " + SynergyController.singleton.ArcherCounter;
+        mageText.text = "Mages - " + SynergyController.singleton.MageCounter;
     }
 }
