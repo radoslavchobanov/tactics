@@ -47,5 +47,6 @@ public class GameController : MonoBehaviour
         TacticsMove.singleton.ResetChampionsForBuyRound();
         TacticsMove.singleton.ResetEnemies();
         TacticsMove.singleton.championsStartRoundPositions.Clear();
+        TacticsMove.singleton.enemiesStartRoundPositions.Clear();
     } 
 }
