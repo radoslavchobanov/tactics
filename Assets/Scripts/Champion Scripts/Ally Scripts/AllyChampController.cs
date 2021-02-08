@@ -15,14 +15,14 @@ public class AllyChampController : ChampionController
 
     void Start()
     {
+        InitController();
+
         //controller variables
         previousPointedTile = GetCurrentTile();
         currentPlacedTile = null;
 
         //champ flags
         selected = false;
-
-        InitController();
     }
 
     void Update()
@@ -49,42 +49,22 @@ public class AllyChampController : ChampionController
     
     private void OnMouseDown()
     {
-        if (TacticsMove.singleton.gameState == GameState.BuyingRound)
+        // if we click on a champion while they are fighting -> nothing happens, return
+        if (TacticsMove.singleton.gameState == GameState.FightingRound)
+            return;
+
+        if (selected) // when champ is selected/being dragged and we click it
         {
-            if (selected) // when champ is selected/being dragged and we click the mouse
-            {
-                selected = false;
-
-                if (GetCurrentTile() != null && GetCurrentTile().isHomeBattlefieldTile)
-                {
-                    gameObject.transform.position = new Vector3(GetCurrentTile().transform.position.x, gameObject.transform.position.y, GetCurrentTile().transform.position.z);
-
-                    //SynergyUpdate();
-                    if (currentPlacedTile.isBench && GetCurrentTile().isHomeBattlefieldTile)
-                    {
-                        // to update the synergies for new champ on the battlefield
-
-                        // New champ on the battlefield event calling!
-                        TacticsMove.singleton.ChampionEnteredBattlefield.Invoke();
-
-                    }
-                    else if (currentPlacedTile.isHomeBattlefieldTile && GetCurrentTile().isBench)
-                    {
-                        // to update the synergies for champ left the battlefield
-                    }
-
-                }
-                else
-                    gameObject.transform.position = new Vector3(currentPlacedTile.transform.position.x, gameObject.transform.position.y, currentPlacedTile.transform.position.z);
-
-                TacticsMove.singleton.ClearSelectedTiles();
-            }
-            else if (!selected) // when there is no champ selected and we click over a champ
-            {
-                selected = true;
-                TacticsMove.singleton.MakeHomeTilesSelectable();
-                currentPlacedTile = GetCurrentTile();
-            }
+            selected = false;
+            PlaceChampion();
+            TacticsMove.singleton.ClearSelectedTiles();
+        }
+        
+        else if (!selected) // when there is no champ selected and we click over a champ
+        {
+            selected = true;
+            currentPlacedTile = GetCurrentTile();
+            TacticsMove.singleton.MakeHomeTilesSelectable();
         }
     }
     private void OnMouseEnter()
@@ -120,5 +100,32 @@ public class AllyChampController : ChampionController
         {
             GetCurrentTile().isPointed = true;
         }
+    }
+
+    private void PlaceChampion()
+    {
+        if (GetCurrentTile() != null && GetCurrentTile().isHomeBattlefieldTile)
+        {
+            gameObject.transform.position = new Vector3(GetCurrentTile().transform.position.x, gameObject.transform.position.y, GetCurrentTile().transform.position.z);
+
+            if (currentPlacedTile.isBench)
+            {
+                // to update the synergies for new champ on the battlefield
+                TacticsMoveEvents.championEnteredBattlefield.Invoke(this.GetComponent<Champion>());
+            }
+        }
+        else if (GetCurrentTile() != null && GetCurrentTile().isBench)
+        {
+            gameObject.transform.position = new Vector3(GetCurrentTile().transform.position.x, gameObject.transform.position.y, GetCurrentTile().transform.position.z);
+
+            if (currentPlacedTile.isHomeBattlefieldTile)
+            {
+                // to update the synergies for champ left the battlefield
+                TacticsMoveEvents.championLeftBattlefield.Invoke(this.GetComponent<Champion>());
+            }
+        }
+        else
+            gameObject.transform.position = new Vector3(currentPlacedTile.transform.position.x, gameObject.transform.position.y, currentPlacedTile.transform.position.z);
+
     }
 }       

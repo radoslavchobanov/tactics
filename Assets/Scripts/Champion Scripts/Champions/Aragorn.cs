@@ -7,33 +7,33 @@ public class Aragorn : Champion
     private ChampionController controller;
     public void InitChampion()
     {
-        attackDamage = 200;
-        attackSpeed = 0.6f;
-        attackRange = 2f;
-        attackType = ChampionAttackType.Melee;
-        health = 1200;
-        armor = 50;
-        movementSpeed = 1.5f;
+        AttackDamage = 200;
+        AttackSpeed = 0.6f;
+        AttackRange = 2f;
+        AttackType = ChampionAttackType.Melee;
+        Health = 1200;
+        Armor = 50;
+        MovementSpeed = 1.5f;
 
-        _class = Class.Warrior;
-        _race = Race.Human;
+        _Class = Class.Warrior;
+        _Race = Race.Human;
     }
     public void Start()
     {
         InitChampion();
         controller = gameObject.GetComponent<ChampionController>();
 
-        controller.attackDamage = attackDamage;
-        controller.attackSpeed = attackSpeed;
-        controller.attackRange = attackRange;
-        controller.attackType = attackType;
-        controller.movementSpeed = movementSpeed;
-        controller.armor = armor;
-        controller._class = _class;
-        controller._race = _race;
+        controller.AttackDamage = AttackDamage;
+        controller.AttackSpeed = AttackSpeed;
+        controller.AttackRange = AttackRange;
+        controller.AttackType = AttackType;
+        controller.MovementSpeed = MovementSpeed;
+        controller.Armor = Armor;
+        controller._Class = _Class;
+        controller._Race = _Race;
 
-        controller.health = health;
-        controller.healthBar.maxValue = health;
+        controller.Health = Health;
+        controller.healthBar.maxValue = Health;
         controller.healthBar.value = controller.healthBar.maxValue;
     }
 }

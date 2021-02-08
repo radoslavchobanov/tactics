@@ -218,12 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8962afd221b2694c8a6b9a666dbb060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChampionEnteredBattlefield:
-    m_PersistentCalls:
-      m_Calls: []
-  SynergiesUpdated:
-    m_PersistentCalls:
-      m_Calls: []
   aragornButton: {fileID: 1855598326}
   sarumanButton: {fileID: 642526105}
   legolasButton: {fileID: 1534164557}
@@ -234,7 +228,6 @@ MonoBehaviour:
   archerText: {fileID: 2023351160}
   mageText: {fileID: 700250086}
   map: []
-  champions: []
   championsOnBench: []
   championsOnBoard: []
   championsStartRoundPositions: []
@@ -256,6 +249,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: 
   textList:
+  - s: 'da si printiram tekushtiq state na igrata. primerno da se printira
+
+      BuyRoundStart,
+      FightRoundStart, etc... same for BuyRoundEnd ...'
+    state: 2
+    show: 1
+    deleteQuestion: 0
   - s: 'da si dobavq tilove i da gi napravq s bool promenliva che sa bench
 
       da
@@ -321,6 +321,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0620f2f124b2a4e888a0d2c2b5c128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HumanCounter3:
+    m_PersistentCalls:
+      m_Calls: []
+  HumanCounter6:
+    m_PersistentCalls:
+      m_Calls: []
+  HumanCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  OrcCounter3:
+    m_PersistentCalls:
+      m_Calls: []
+  OrcCounter6:
+    m_PersistentCalls:
+      m_Calls: []
+  OrcCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  ElfCounter3:
+    m_PersistentCalls:
+      m_Calls: []
+  ElfCounter6:
+    m_PersistentCalls:
+      m_Calls: []
+  ElfCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  WarriorCounter3:
+    m_PersistentCalls:
+      m_Calls: []
+  WarriorCounter6:
+    m_PersistentCalls:
+      m_Calls: []
+  WarriorCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  ArcherCounter3:
+    m_PersistentCalls:
+      m_Calls: []
+  ArcherCounter6:
+    m_PersistentCalls:
+      m_Calls: []
+  ArcherCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  MageCounter3:
+    m_PersistentCalls:
+      m_Calls: []
+  MageCounter6:
+    m_PersistentCalls:
+      m_Calls: []
+  MageCounter9:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &133969115
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,16 +964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9bb8809c0554d4485bdf8c8dba4db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0
-  attackSpeed: 0
-  attackRange: 0
-  attackType: 0
-  health: 0
-  armor: 0
-  movementSpeed: 0
-  buffs: 
-  _class: 0
-  _race: 0
   haveBuffForUpdate: 0
   target: {fileID: 0}
   healthBar: {fileID: 1332594906}

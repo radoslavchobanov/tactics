@@ -17,7 +17,7 @@ public class MenuScript
         }
     }
 
-    [MenuItem("Tools/Assign Tile Script")]
+    [UnityEditor.MenuItem("Tools/Assign Tile Script")]
     public static void AssignTileScript()
     {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");

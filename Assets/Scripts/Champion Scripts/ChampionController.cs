@@ -50,14 +50,14 @@ public class ChampionController : Champion
 
     public void MoveChampionForward()
     {
-        gameObject.transform.position += new Vector3(0, 0, 1) * Time.deltaTime * movementSpeed;
+        gameObject.transform.position += new Vector3(0, 0, 1) * Time.deltaTime * MovementSpeed;
     }
     public void MoveChampionTowardsTarget()
     {
         if (!IsTargetInRange() || moving)
         {
             MoveToNextTileFromShortestPath();
-            timeForNextAttack = Time.time + (1 / attackSpeed); // in order not to attack instantly when target is reached
+            timeForNextAttack = Time.time + (1 / AttackSpeed); // in order not to attack instantly when target is reached
 
             //CalculateDistanceToTarget();
             //gameObject.transform.position += GetDirectionToTarget() * Time.deltaTime * movementSpeed;
@@ -85,7 +85,7 @@ public class ChampionController : Champion
 
                 Vector3 heading = targetPos - gameObject.transform.position;
                 heading.Normalize();
-                Vector3 velocity = heading * movementSpeed;
+                Vector3 velocity = heading * MovementSpeed;
 
                 gameObject.transform.forward = heading;
                 gameObject.transform.position += velocity * Time.deltaTime;
@@ -94,6 +94,7 @@ public class ChampionController : Champion
             {
                 moving = false;
                 gameObject.transform.position = targetPos;
+
                 CalculatePaths();
                 FindShortestPath();
             }
@@ -112,8 +113,7 @@ public class ChampionController : Champion
 
             MoveChampionTowardsTarget();
         }
-        else if (!target)
-            MoveChampionForward();
+        else MoveChampionForward();
     }
 
     public void OnTargetDead()
@@ -130,13 +130,13 @@ public class ChampionController : Champion
         Vector3 heading = target.transform.position - gameObject.transform.position;
         gameObject.transform.forward = heading;
 
-        float physicalDmgReduction = ((float)targetController.armor / 100); // physical dmg reduction from target armor
-        int dmg = attackDamage - (int)(attackDamage * physicalDmgReduction);
+        float physicalDmgReduction = ((float)targetController.Armor / 100); // physical dmg reduction from target armor
+        int dmg = AttackDamage - (int)(AttackDamage * physicalDmgReduction);
 
-        targetController.health -= dmg;
-        targetController.healthBar.value = targetController.health;
+        targetController.Health -= dmg;
+        targetController.healthBar.value = targetController.Health;
 
-        if (targetController.health <= 0)
+        if (targetController.Health <= 0)
         {
             OnTargetDead();
         }
@@ -144,7 +144,7 @@ public class ChampionController : Champion
     public void FightTarget()
     {
         CalculateDistanceToTarget();
-        if (distanceToTarget > attackRange) // ako po vreme na bitka, targeta se otdalechi ot range da trugva kam nego
+        if (distanceToTarget > AttackRange) // ako po vreme na bitka, targeta se otdalechi ot range da trugva kam nego
         {
             championState = ChampionState.Moving;
             return;
@@ -153,7 +153,7 @@ public class ChampionController : Champion
         if (!target.GetComponent<ChampionController>().isDead && Time.time > timeForNextAttack)
         {
             AttackTarget();
-            timeForNextAttack = Time.time + (1 / attackSpeed);
+            timeForNextAttack = Time.time + (1 / AttackSpeed);
         }
         else if (target.GetComponent<ChampionController>().isDead)
             championState = ChampionState.Moving;
@@ -162,7 +162,7 @@ public class ChampionController : Champion
     public bool IsTargetInRange()
     {
         CalculateDistanceToTarget();
-        if (distanceToTarget >= attackRange)
+        if (distanceToTarget >= AttackRange)
         {
             isTargetInRange = false;
             return false;
@@ -175,11 +175,12 @@ public class ChampionController : Champion
     }
     public bool IsTargetDead()
     {
-        if (target.GetComponent<ChampionController>().health <= 0)
+        if (target.GetComponent<ChampionController>().Health <= 0)
             return true;
         return false;
     }
 
+    // A* functions ---------------
     public void CalculatePaths()
     {
         Tile startTile = GetCurrentTile();
@@ -236,7 +237,7 @@ public class ChampionController : Champion
         while (currTile != GetCurrentTile() && shortestPath.Count < target.GetComponent<ChampionController>().GetCurrentTile().fCost - 1)
         {
             shortestPath.Push(currTile);
-            //currTile.inShortestPath = true;
+            currTile.isInShortestPath = true;
             currTile = currTile.parent;
         }
     }
@@ -245,7 +246,7 @@ public class ChampionController : Champion
         Tile lowest = list[0];
         foreach (Tile t in list)
         {
-            if (t.fCost < lowest.fCost || t.fCost == lowest.fCost && t.hCost < lowest.hCost)
+            if (!t.isPlayerOn && t.fCost < lowest.fCost || t.fCost == lowest.fCost && t.hCost < lowest.hCost)
             {
                 lowest = t;
             }
@@ -253,4 +254,5 @@ public class ChampionController : Champion
         list.Remove(lowest);
         return lowest;
     }
+    // ----------------------------
 }

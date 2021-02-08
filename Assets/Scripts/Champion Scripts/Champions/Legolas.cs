@@ -7,33 +7,33 @@ public class Legolas : Champion
     private ChampionController controller;
     public void InitChampion()
     {
-        attackDamage = 150;
-        attackSpeed = 1f;
-        attackRange = 6.6f;
-        attackType = ChampionAttackType.Range;
-        health = 860;
-        armor = 25;
-        movementSpeed = 1.5f;
+        AttackDamage = 150;
+        AttackSpeed = 1f;
+        AttackRange = 6.6f;
+        AttackType = ChampionAttackType.Range;
+        Health = 860;
+        Armor = 25;
+        MovementSpeed = 1.5f;
 
-        _class = Class.Archer;
-        _race = Race.Elf;
+        _Class = Class.Archer;
+        _Race = Race.Elf;
     }
     public void Start()
     {
         InitChampion();
         controller = gameObject.GetComponent<ChampionController>();
 
-        controller.attackDamage = attackDamage;
-        controller.attackSpeed = attackSpeed;
-        controller.attackRange = attackRange;
-        controller.attackType = attackType;
-        controller.movementSpeed = movementSpeed;
-        controller.armor = armor;
-        controller._class = _class;
-        controller._race = _race;
+        controller.AttackDamage = AttackDamage;
+        controller.AttackSpeed = AttackSpeed;
+        controller.AttackRange = AttackRange;
+        controller.AttackType = AttackType;
+        controller.MovementSpeed = MovementSpeed;
+        controller.Armor = Armor;
+        controller._Class = _Class;
+        controller._Race = _Race;
 
-        controller.health = health;
-        controller.healthBar.maxValue = health;
+        controller.Health = Health;
+        controller.healthBar.maxValue = Health;
         controller.healthBar.value = controller.healthBar.maxValue;
     }
 }

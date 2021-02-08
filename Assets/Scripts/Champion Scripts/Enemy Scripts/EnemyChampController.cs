@@ -7,15 +7,15 @@ public class EnemyChampController : ChampionController
 {
     public void InitEnemyBoss()
     {
-        attackDamage = 600;
-        attackSpeed = 0.2f;
-        attackRange = 2f;
-        attackType = ChampionAttackType.Melee;
+        AttackDamage = 600;
+        AttackSpeed = 0.2f;
+        AttackRange = 2f;
+        AttackType = ChampionAttackType.Melee;
         healthBar.maxValue = 10000;
         healthBar.value = healthBar.maxValue;
-        health = (int)healthBar.maxValue;
-        armor = 0;
-        movementSpeed = 1.5f;
+        Health = (int)healthBar.maxValue;
+        Armor = 0;
+        MovementSpeed = 1.5f;
 
         //no class
         //no race

@@ -7,33 +7,33 @@ public class Saruman : Champion
     private ChampionController controller;
     public void InitChampion()
     {
-        attackDamage = 100;
-        attackSpeed = 0.9f;
-        attackRange = 6f;
-        attackType = ChampionAttackType.Range;
-        health = 800;
-        armor = 20;
-        movementSpeed = 1.5f;
+        AttackDamage = 100;
+        AttackSpeed = 0.9f;
+        AttackRange = 6f;
+        AttackType = ChampionAttackType.Range;
+        Health = 800;
+        Armor = 20;
+        MovementSpeed = 1.5f;
 
-        _class = Class.Mage;
-        _race = Race.Orc;
+        _Class = Class.Mage;
+        _Race = Race.Orc;
     }
     public void Start()
     {
         InitChampion();
         controller = gameObject.GetComponent<ChampionController>();
 
-        controller.attackDamage = attackDamage;
-        controller.attackSpeed = attackSpeed;
-        controller.attackRange = attackRange;
-        controller.attackType = attackType;
-        controller.movementSpeed = movementSpeed;
-        controller.armor = armor;
-        controller._class = _class;
-        controller._race = _race;
+        controller.AttackDamage = AttackDamage;
+        controller.AttackSpeed = AttackSpeed;
+        controller.AttackRange = AttackRange;
+        controller.AttackType = AttackType;
+        controller.MovementSpeed = MovementSpeed;
+        controller.Armor = Armor;
+        controller._Class = _Class;
+        controller._Race = _Race;
 
-        controller.health = health;
-        controller.healthBar.maxValue = health;
+        controller.Health = Health;
+        controller.healthBar.maxValue = Health;
         controller.healthBar.value = controller.healthBar.maxValue;
     }
 }

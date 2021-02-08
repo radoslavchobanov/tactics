@@ -8,14 +8,17 @@ using UnityEngine.Events;
 public class Tile : MonoBehaviour
 {
     //main variables
+    public Tile parent = null;
+
     public bool isHomeBattlefieldTile = false;
     public bool isWalkable = true;
     public bool isSelectable = false;
     public bool isPointed = false;
     public bool isPlayerOn = false;
-    public Tile parent = null;
-    public bool inShortestPath = false;
+    public bool isInShortestPath = false;
     public bool isBench = false;
+
+    public bool reserved;
 
     public List<Tile> adjacentTileList = new List<Tile>();
 

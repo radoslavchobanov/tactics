@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine;
 
 public enum GameState { BuyingRound, FightingRound };
 
@@ -13,15 +14,8 @@ public class TacticsMove : MonoBehaviour
     public static TacticsMove singleton;
     //---------------------------------------------------------------------
 
-    //Events
-
-    public UnityEvent ChampionEnteredBattlefield;
-
-    public UnityEvent SynergiesUpdated;
-    //
-
     //UI shop vars --------------------------------------------------------
-    public Button aragornButton, sarumanButton, legolasButton;
+    public  Button aragornButton, sarumanButton, legolasButton;
     //---------------------------------------------------------------------
 
     //UI synergy vars for UI synergy text panel11 -------------------------
@@ -33,7 +27,7 @@ public class TacticsMove : MonoBehaviour
     //---------------------------------------------------------------------
 
     //champion variables --------------------------------------------------
-    public List<GameObject> champions; // list with all the ally champions on the screen
+    private List<GameObject> championsOnScreen; // list with all the ally champions on the screen
     public List<GameObject> championsOnBench; // list with all the ally champions on the bench
     public List<GameObject> championsOnBoard; // list with all the ally champions on the board
     public List<Vector3> championsStartRoundPositions; // list with all the starting positions of the champions
@@ -50,6 +44,8 @@ public class TacticsMove : MonoBehaviour
     //public SynergyController synergyController; // controlls the synergy of the allied champions and visuallise it on the screen
     //---------------------------------------------------------------------
 
+    public List<GameObject> ChampionsOnScreen { get => championsOnScreen; private set { championsOnScreen = value; } }
+
     private void Awake()
     {
         if (singleton != null && singleton != this)
@@ -61,8 +57,8 @@ public class TacticsMove : MonoBehaviour
     void Start()
     {
         // Events init
-        ChampionEnteredBattlefield.AddListener(() => UpdateVisualTextSynergies());
-        SynergiesUpdated.AddListener(() => print("Synergies Updated"));
+        TacticsMoveEvents.championEnteredBattlefield.AddListener(SynergyController.singleton.AddIntoSyngeries);
+        TacticsMoveEvents.championLeftBattlefield.AddListener(SynergyController.singleton.RemoveFromSynergies);
 
         //UI shop vars
         aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
@@ -75,7 +71,7 @@ public class TacticsMove : MonoBehaviour
         map = GameObject.FindGameObjectsWithTag("Tile");
 
         //player variables 
-        champions = new List<GameObject>();
+        championsOnScreen = new List<GameObject>();
         championsOnBench = new List<GameObject>();
         championsOnBoard = new List<GameObject>();
         championsStartRoundPositions = new List<Vector3>();
@@ -87,6 +83,8 @@ public class TacticsMove : MonoBehaviour
         //game variables
         gameState = new GameState();
         numberOfRound = 0;
+
+        //func calls on start
     }
     private void Update()
     {
@@ -107,6 +105,7 @@ public class TacticsMove : MonoBehaviour
         }
     }
 
+    //Tile functions -------------------------------------------
     public Tile GetChampionTile(GameObject champion) // getting the current tile of a champion
     {
         RaycastHit hit;
@@ -147,19 +146,21 @@ public class TacticsMove : MonoBehaviour
             t.FindNeighbors(targetTile);
         }
     }
+    //----------------------------------------------------------
 
+    //Champions functions -----------------------------------------
     public void SaveChampionsStartRoundPositions() // saving position of each champion in array
     {
-        foreach (GameObject obj in champions)
+        foreach (GameObject obj in ChampionsOnScreen)
         {
             championsStartRoundPositions.Add(obj.transform.position);
         }
     }
     public void ResetChampionsForBuyRound() // resetting the champions for buying round
     {
-        for (int i = 0; i < champions.Count; ++i)
+        for (int i = 0; i < ChampionsOnScreen.Count; ++i)
         {
-            GameObject currChamp = champions.ElementAt(i);
+            GameObject currChamp = ChampionsOnScreen.ElementAt(i);
             if (currChamp == null)
                 return;
 
@@ -172,19 +173,19 @@ public class TacticsMove : MonoBehaviour
             currChamp.GetComponent<AllyChampController>().distanceToTarget = Mathf.Infinity;
             currChamp.GetComponent<AllyChampController>().target = null;
             currChamp.GetComponent<AllyChampController>().healthBar.value = currChamp.GetComponent<AllyChampController>().healthBar.maxValue;
-            currChamp.GetComponent<AllyChampController>().health = (int)currChamp.GetComponent<AllyChampController>().healthBar.value;
+            currChamp.GetComponent<AllyChampController>().Health = (int)currChamp.GetComponent<AllyChampController>().healthBar.value;
             currChamp.GetComponent<AllyChampController>().transform.forward = new Vector3(0, 0, 1);
 
             foreach (Tile t in currChamp.GetComponent<AllyChampController>().shortestPath)
             {
-                t.inShortestPath = false;
+                t.isInShortestPath = false;
             }
             currChamp.GetComponent<AllyChampController>().shortestPath.Clear();
         }
     }
     public void ChangeChampionsState(ChampionState state) // changing the champion state to smth
     {
-        foreach (GameObject obj in champions)
+        foreach (GameObject obj in ChampionsOnScreen)
         {
             obj.GetComponent<AllyChampController>().championState = state;
         }
@@ -210,7 +211,9 @@ public class TacticsMove : MonoBehaviour
 
         return allEnemiesDead;
     }
+    //-------------------------------------------------------------
 
+    //Enemies functions -------------------------------------------
     public void SaveEnemiesStartRoundPositions() // saving position of each enemy in array
     {
         foreach (GameObject obj in enemies)
@@ -235,12 +238,12 @@ public class TacticsMove : MonoBehaviour
             currEnemy.GetComponent<EnemyChampController>().distanceToTarget = Mathf.Infinity;
             currEnemy.GetComponent<EnemyChampController>().target = null;
             currEnemy.GetComponent<EnemyChampController>().healthBar.value = currEnemy.GetComponent<EnemyChampController>().healthBar.maxValue;
-            currEnemy.GetComponent<EnemyChampController>().health = (int)currEnemy.GetComponent<EnemyChampController>().healthBar.value;
+            currEnemy.GetComponent<EnemyChampController>().Health = (int)currEnemy.GetComponent<EnemyChampController>().healthBar.value;
             currEnemy.GetComponent<EnemyChampController>().transform.forward = new Vector3(0, 0, -1);
 
             foreach (Tile t in currEnemy.GetComponent<EnemyChampController>().shortestPath)
             {
-                t.inShortestPath = false;
+                t.isInShortestPath = false;
             }
             currEnemy.GetComponent<EnemyChampController>().shortestPath.Clear();
         }
@@ -254,7 +257,7 @@ public class TacticsMove : MonoBehaviour
     }
     public bool EnemiesWin() // checking if you lose the round
     {
-        if (champions.Count == 0)
+        if (ChampionsOnScreen.Count == 0)
         {
             print("No champions");
             return true;
@@ -262,7 +265,7 @@ public class TacticsMove : MonoBehaviour
 
         bool allChampionsDead = true;
 
-        foreach (GameObject obj in champions)
+        foreach (GameObject obj in ChampionsOnScreen)
         {
             if (obj.activeInHierarchy)
             {
@@ -273,6 +276,7 @@ public class TacticsMove : MonoBehaviour
 
         return allChampionsDead;
     }
+    //-------------------------------------------------------------
 
     public void OnWonRound() // do that when win a round
     {
@@ -401,17 +405,15 @@ public class TacticsMove : MonoBehaviour
             }
         }
 
-        champions.Add(champ);
+        ChampionsOnScreen.Add(champ);
         return champ;
     }
-
-    public void UpdateVisualTextSynergies()
+    
+    public void UpdateSynergiesTextVisuals()
     {
-        print("UpdateVisualTextSynergies");
-
         humanText.text = "Humans - " + SynergyController.singleton.HumanCounter;
         orcText.text = "Orcs - " + SynergyController.singleton.OrcCounter;
-        elfText.text = "Elfs - " + SynergyController.singleton.ElfCounter;    
+        elfText.text = "Elfs - " + SynergyController.singleton.ElfCounter;
 
         warriorText.text = "Warriors - " + SynergyController.singleton.WarriorCounter;
         archerText.text = "Archers - " + SynergyController.singleton.ArcherCounter;
