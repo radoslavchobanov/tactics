@@ -106,8 +106,8 @@ public class Aragorn : Champion
     }
     private void WarriorBuff6()
     {
-        if (this.gameObject.GetComponent<WarriorBuff6>() != null)
-            Destroy(this.gameObject.GetComponent<WarriorBuff6>());
+        if (this.gameObject.GetComponent<WarriorBuff3>() != null)
+            Destroy(this.gameObject.GetComponent<WarriorBuff3>());
         else if (this.gameObject.GetComponent<WarriorBuff9>() != null)
             Destroy(this.gameObject.GetComponent<WarriorBuff9>());
 

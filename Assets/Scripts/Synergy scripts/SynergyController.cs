@@ -107,7 +107,7 @@ public class SynergyController : SynergyBuffGiver
         set 
         { 
             warriorCounter = value;
-                
+
             if (warriorCounter < 3) WarriorCounter0?.Invoke();
             else if (warriorCounter >= 3 && warriorCounter < 6) WarriorCounter3.Invoke();
             else if (warriorCounter >= 6 && warriorCounter < 9) WarriorCounter6.Invoke();
