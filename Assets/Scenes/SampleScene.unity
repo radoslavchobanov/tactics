@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 8621292}
   - component: {fileID: 8621291}
   - component: {fileID: 8621294}
-  - component: {fileID: 8621297}
   - component: {fileID: 8621295}
+  - component: {fileID: 8621297}
   - component: {fileID: 8621296}
   m_Layer: 0
   m_Name: EventSystem
@@ -228,9 +228,9 @@ MonoBehaviour:
   archerText: {fileID: 2023351160}
   mageText: {fileID: 700250086}
   map: []
+  championsOnScreen: []
   championsOnBench: []
   championsOnBoard: []
-  championsStartRoundPositions: []
   enemies: []
   enemiesStartRoundPositions: []
   gameState: 0
@@ -249,13 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: 
   textList:
-  - s: 'da si printiram tekushtiq state na igrata. primerno da se printira
-
-      BuyRoundStart,
-      FightRoundStart, etc... same for BuyRoundEnd ...'
-    state: 2
-    show: 1
-    deleteQuestion: 0
   - s: 'da si dobavq tilove i da gi napravq s bool promenliva che sa bench
 
       da

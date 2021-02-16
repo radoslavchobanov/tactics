@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class AllyChampController : ChampionController
 {
@@ -84,7 +85,28 @@ public class AllyChampController : ChampionController
 
         GetCurrentTile().isPointed = false;
     }
+    private void OnMouseOver() 
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().enabled == true)
+            {
+                this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().enabled = false;
+                return;
+            }
 
+                this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().text = MakeStringWithStats();
+                this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().enabled = true;
+        }    
+    }
+
+    private string MakeStringWithStats()
+    {
+        string text = "AD " + this.gameObject.GetComponent<Champion>().AttackDamage.ToString() + "\n";
+                text += "Armor " + this.gameObject.GetComponent<Champion>().Armor.ToString();
+
+        return text;
+    }
     public void MakeCurrentTilePointedAndPreviousUnpointed()
     {
         if (GetCurrentTile() == null)
@@ -104,25 +126,23 @@ public class AllyChampController : ChampionController
 
     private void PlaceChampion()
     {
+        // if the champ is placed TO HOME TILE, to make his position the tile position
         if (GetCurrentTile() != null && GetCurrentTile().isHomeBattlefieldTile)
         {
             gameObject.transform.position = new Vector3(GetCurrentTile().transform.position.x, gameObject.transform.position.y, GetCurrentTile().transform.position.z);
-
+            
+            // if the champ is placed FROM BENCH TILE, to call the event for champ entered battlefield
             if (currentPlacedTile.isBench)
-            {
-                // to update the synergies for new champ on the battlefield
-                TacticsMoveEvents.championEnteredBattlefield.Invoke(this.GetComponent<Champion>());
-            }
+                TacticsMoveEvents.ChampionEnteredBattlefield.Invoke(this.GetComponent<Champion>());
         }
+        // if the champ is placed TO BENCH TILE, to make his position the tile position
         else if (GetCurrentTile() != null && GetCurrentTile().isBench)
         {
             gameObject.transform.position = new Vector3(GetCurrentTile().transform.position.x, gameObject.transform.position.y, GetCurrentTile().transform.position.z);
 
+            // if the champ is placed FROM HOME TILE, to call the event for champ left battlefield
             if (currentPlacedTile.isHomeBattlefieldTile)
-            {
-                // to update the synergies for champ left the battlefield
-                TacticsMoveEvents.championLeftBattlefield.Invoke(this.GetComponent<Champion>());
-            }
+                TacticsMoveEvents.ChampionLeftBattlefield.Invoke(this.GetComponent<Champion>());
         }
         else
             gameObject.transform.position = new Vector3(currentPlacedTile.transform.position.x, gameObject.transform.position.y, currentPlacedTile.transform.position.z);

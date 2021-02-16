@@ -27,10 +27,10 @@ public class TacticsMove : MonoBehaviour
     //---------------------------------------------------------------------
 
     //champion variables --------------------------------------------------
-    private List<GameObject> championsOnScreen; // list with all the ally champions on the screen
-    public List<GameObject> championsOnBench; // list with all the ally champions on the bench
-    public List<GameObject> championsOnBoard; // list with all the ally champions on the board
-    public List<Vector3> championsStartRoundPositions; // list with all the starting positions of the champions
+    [SerializeField] private List<GameObject> championsOnScreen; // list with all the ally champions on the screen
+    [SerializeField] private List<GameObject> championsOnBench; // list with all the ally champions on the bench
+    [SerializeField] private List<GameObject> championsOnBoard; // list with all the ally champions on the board
+    private List<Vector3> championsStartRoundPositions; // list with all the starting positions of the champions
     //---------------------------------------------------------------------
 
     //enemy variables -----------------------------------------------------
@@ -41,10 +41,12 @@ public class TacticsMove : MonoBehaviour
     //game variables ------------------------------------------------------
     public GameState gameState; // type of the round - buying or fighting
     public int numberOfRound; // the number of rounds from the beginning
-    //public SynergyController synergyController; // controlls the synergy of the allied champions and visuallise it on the screen
     //---------------------------------------------------------------------
 
-    public List<GameObject> ChampionsOnScreen { get => championsOnScreen; private set { championsOnScreen = value; } }
+    public List<GameObject> ChampionsOnScreen { get => championsOnScreen; private set => championsOnScreen = value; }
+    public List<GameObject> ChampionsOnBench { get => championsOnBench; private set => championsOnBench = value; }
+    public List<GameObject> ChampionsOnBoard { get => championsOnBoard; private set => championsOnBoard = value; }
+    public List<Vector3> ChampionsStartRoundPositions { get => championsStartRoundPositions; private set => championsStartRoundPositions = value; }
 
     private void Awake()
     {
@@ -54,11 +56,24 @@ public class TacticsMove : MonoBehaviour
             singleton = this;
     }
 
+    private void OnBuyRoundStart() => print("Buy round start");
+    private void OnBuyRoundEnd() => print("Buy round end");
+    private void OnFightRoundStart() => print("Fight round start");
+    private void OnFightRoundEnd() => print("Fight round end");
+
     void Start()
     {
         // Events init
-        TacticsMoveEvents.championEnteredBattlefield.AddListener(SynergyController.singleton.AddIntoSyngeries);
-        TacticsMoveEvents.championLeftBattlefield.AddListener(SynergyController.singleton.RemoveFromSynergies);
+        TacticsMoveEvents.ChampionEnteredBattlefield.AddListener(OnChampionEnteredBattlefield);
+        TacticsMoveEvents.ChampionLeftBattlefield.AddListener(OnChampionLeftBattlefield);
+        
+        TacticsMoveEvents.ChampionEnteredBattlefield.AddListener(SynergyController.singleton.AddIntoSyngeries);
+        TacticsMoveEvents.ChampionLeftBattlefield.AddListener(SynergyController.singleton.RemoveFromSynergies);
+
+        TacticsMoveEvents.BuyRoundStart.AddListener(OnBuyRoundStart);
+        TacticsMoveEvents.BuyRoundEnd.AddListener(OnBuyRoundEnd);
+        TacticsMoveEvents.FightRoundStart.AddListener(OnFightRoundStart);
+        TacticsMoveEvents.FightRoundEnd.AddListener(OnFightRoundEnd);
 
         //UI shop vars
         aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
@@ -74,6 +89,7 @@ public class TacticsMove : MonoBehaviour
         championsOnScreen = new List<GameObject>();
         championsOnBench = new List<GameObject>();
         championsOnBoard = new List<GameObject>();
+
         championsStartRoundPositions = new List<Vector3>();
 
         //enemy variables
@@ -183,7 +199,7 @@ public class TacticsMove : MonoBehaviour
             currChamp.GetComponent<AllyChampController>().shortestPath.Clear();
         }
     }
-    public void ChangeChampionsState(ChampionState state) // changing the champion state to smth
+    public void ChangeChampionsState(ChampionState state) // changing the champions state to smth
     {
         foreach (GameObject obj in ChampionsOnScreen)
         {
@@ -288,6 +304,16 @@ public class TacticsMove : MonoBehaviour
         print("enemies win");
         ChangeEnemiesState(ChampionState.Idle);
     }
+    private void OnChampionEnteredBattlefield(Champion champ)
+    {
+        ChampionsOnBench.Remove(champ.gameObject);
+        ChampionsOnBoard.Add(champ.gameObject);
+    }
+    private void OnChampionLeftBattlefield(Champion champ)
+    {
+        ChampionsOnBoard.Remove(champ.gameObject);
+        ChampionsOnBench.Add(champ.gameObject);
+    }
 
     public GameObject CreateChampion(string name, Vector3 startingPos, Color color) // creating champion NAME on given position with given color
     {
@@ -305,8 +331,9 @@ public class TacticsMove : MonoBehaviour
 
         champ.GetComponent<Renderer>().material.color = color;
 
-        GameObject sliderCanvas = CreateCanvas(); // canvas for the slider
+        GameObject Canvas = CreateCanvas(); // canvas for the slider and text
         GameObject healthbarSlider = CreateSlider(); // slider for the healthbar
+        CreateText(); // text for the champion stats panel
 
         //adding all the scripts for champion
         champ.AddComponent<AllyChampController>();
@@ -349,7 +376,7 @@ public class TacticsMove : MonoBehaviour
             slider.GetComponent<Slider>().wholeNumbers = true;
             slider.GetComponent<Slider>().value = slider.GetComponent<Slider>().maxValue;
 
-            slider.transform.SetParent(sliderCanvas.transform, false);
+            slider.transform.SetParent(Canvas.transform, false);
             return slider;
 
             GameObject CreateBackGround()
@@ -404,8 +431,32 @@ public class TacticsMove : MonoBehaviour
                 return handleSlideArea;
             }
         }
+        GameObject CreateText()  //creating text for the stats
+        {
+            GameObject text = new GameObject();
+            text.name = "Text";
+            text.AddComponent<RectTransform>();
+            text.AddComponent<Text>();
+
+            // text.SetActive(false);
+            text.GetComponent<Text>().enabled = false;
+
+            text.transform.position = new Vector3(1.2f, 1.29f, 0.22f);
+            text.transform.eulerAngles = new Vector3(80, 0, 0);
+            text.transform.localScale = new Vector3(0.00783f, 0.007f, 0);
+
+            text.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+            text.GetComponent<Text>().fontStyle = FontStyle.Normal;
+            text.GetComponent<Text>().fontSize = 30;
+            text.GetComponent<Text>().color = Color.white;
+            text.GetComponent<Text>().horizontalOverflow = HorizontalWrapMode.Overflow;
+
+            text.transform.SetParent(Canvas.transform, false);
+            return text;
+        }
 
         ChampionsOnScreen.Add(champ);
+        ChampionsOnBench.Add(champ);
         return champ;
     }
     
