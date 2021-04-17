@@ -68,7 +68,34 @@ public class ChampionController : Champion
     public void MoveToNextTileFromShortestPath()
     {
         if (shortestPath.Count > 0 && !moving)
-            targetTile = shortestPath.Pop();
+        {
+            var nextTile = shortestPath.Pop();
+
+            // if (nextTile.reserved == false && nextTile.IsTileEmpty())
+            // {
+            //     nextTile.reserved = true;
+            //     targetTile = nextTile;
+
+            //     var timeSpan = System.DateTime.Now - GameController.startRoundTime;
+            //     Debug.Log( timeSpan.Seconds + ":" + timeSpan.Milliseconds + " : " + this.name + "targeted" + targetTile.name );
+            // }
+            // else if (nextTile.reserved == false && !nextTile.IsTileEmpty())
+            // {
+            //     return;
+            // }
+            // else if (nextTile.reserved == true)
+            // {
+            //     this.championState = ChampionState.OnWaiting;
+            //     return;
+            // }
+
+            // ima nqkolko sluchaq: 
+            // 1 -> sledvashtiq tile na koito trqbva da otide geroq e zaet (ima nqkoi na nego), !IsTileEmpty(), togava 'targetTile' trqbva da e nai blizkiq do NE zaet, NE rezerviran
+            // 2 -> na 'targetTile' nqma nikoi, no nqkoi go e rezerviral che otiva na nego (reserved = true). togava pak 'targetTile' trqbva da e nai blizkiq do NE zaet, NE rezerviran
+            // 3 -> na 'targetTile' nqma nikoi i ne e rezerviran. Otivai na nego.
+            
+            targetTile = nextTile;
+        }
 
         MoveToTile(targetTile);
     }
@@ -92,6 +119,8 @@ public class ChampionController : Champion
             }
             else if (Vector3.Distance(gameObject.transform.position, targetPos) < 0.01f)
             {
+                tile.reserved = false; // freeing the reserved tile when arriving on it
+
                 moving = false;
                 gameObject.transform.position = targetPos;
 

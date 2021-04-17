@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class Aragorn : Champion
         AttackType = ChampionAttackType.Melee;
         Health = 1200;
         Armor = 50;
-        MovementSpeed = 1.5f;
+        MovementSpeed = 1.6f;
 
         _Class = Class.Warrior;
         _Race = Race.Human;
@@ -36,7 +36,7 @@ public class Aragorn : Champion
         controller.healthBar.maxValue = Health;
         controller.healthBar.value = controller.healthBar.maxValue;
 
-        ConnectSynergyEvents();
+        ConnectSynergyEvents(); 
     }
 
     private void ConnectSynergyEvents()

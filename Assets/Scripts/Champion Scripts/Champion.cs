@@ -5,7 +5,7 @@ using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public enum ChampionState { Attacking, Moving, Idle, Dragged};
+public enum ChampionState { Attacking, Moving, Idle, Dragged, OnWaiting};
 public enum ChampionAttackType { Melee, Range };
 
 public enum Race { Human, Orc, Elf };
@@ -20,11 +20,12 @@ public class Champion : MonoBehaviour
     private ChampionAttackType attackType;
     
     //defensive vars
-    private int health;
     private int armor;
     private int magicResist;
 
     //utility vars
+    private int health;
+    private int mana;
     private float movementSpeed;
     public List<Buff> buffs = new List<Buff>(); // ?
 
@@ -41,10 +42,11 @@ public class Champion : MonoBehaviour
     public float AttackRange { get => this.attackRange; set {this.attackRange = value;}}
     public ChampionAttackType AttackType { get => this.attackType; set {this.attackType = value;}}
     
-    public int Health { get => this.health; set {this.health = value;}}
     public int Armor { get => this.armor; set {this.armor = value;}}
     public int MagicResist { get => this.magicResist; set {this.magicResist = value;}}
     
+    public int Health { get => this.health; set {this.health = value;}}
+    public int Mana { get => this.mana; set {this.mana = value;}}
     public float MovementSpeed { get => this.movementSpeed; set {this.movementSpeed = value;}}
     
     public Class _Class { get => this._class; set {this._class = value;}}

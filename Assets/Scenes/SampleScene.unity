@@ -314,6 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e0620f2f124b2a4e888a0d2c2b5c128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HumanCounter0:
+    m_PersistentCalls:
+      m_Calls: []
   HumanCounter3:
     m_PersistentCalls:
       m_Calls: []
@@ -321,6 +324,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   HumanCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  OrcCounter0:
     m_PersistentCalls:
       m_Calls: []
   OrcCounter3:
@@ -332,6 +338,9 @@ MonoBehaviour:
   OrcCounter9:
     m_PersistentCalls:
       m_Calls: []
+  ElfCounter0:
+    m_PersistentCalls:
+      m_Calls: []
   ElfCounter3:
     m_PersistentCalls:
       m_Calls: []
@@ -339,6 +348,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ElfCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  WarriorCounter0:
     m_PersistentCalls:
       m_Calls: []
   WarriorCounter3:
@@ -350,6 +362,9 @@ MonoBehaviour:
   WarriorCounter9:
     m_PersistentCalls:
       m_Calls: []
+  ArcherCounter0:
+    m_PersistentCalls:
+      m_Calls: []
   ArcherCounter3:
     m_PersistentCalls:
       m_Calls: []
@@ -357,6 +372,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ArcherCounter9:
+    m_PersistentCalls:
+      m_Calls: []
+  MageCounter0:
     m_PersistentCalls:
       m_Calls: []
   MageCounter3:

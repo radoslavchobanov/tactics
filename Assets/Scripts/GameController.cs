@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
-{
+{   
+    public static System.DateTime startRoundTime;
+
     public Button btn;
 
     private void Start()
@@ -18,6 +20,7 @@ public class GameController : MonoBehaviour
             TacticsMoveEvents.BuyRoundEnd.Invoke();
 
             TacticsMove.singleton.gameState = GameState.FightingRound; // fight round begin
+            startRoundTime = System.DateTime.Now;
 
             TacticsMoveEvents.FightRoundStart.Invoke();
 
@@ -26,6 +29,8 @@ public class GameController : MonoBehaviour
 
         else if (TacticsMove.singleton.gameState == GameState.FightingRound)
         {
+
+
             TacticsMoveEvents.FightRoundEnd.Invoke();
 
             TacticsMove.singleton.gameState = GameState.BuyingRound; // buy round begin

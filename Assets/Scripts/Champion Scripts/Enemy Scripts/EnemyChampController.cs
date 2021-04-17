@@ -36,6 +36,11 @@ public class EnemyChampController : ChampionController
                     MoveChampion();
                 else if (championState == ChampionState.Attacking)
                     FightTarget();
+                else if (championState == ChampionState.OnWaiting)
+                {
+                    if (IsTargetInRange())
+                        championState = ChampionState.Attacking;
+                }
 
                 break;
 
