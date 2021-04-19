@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour
     public bool isInShortestPath = false;
     public bool isBench = false;
 
-    public bool reserved;
+    public bool reserved; // tile is reserved if there is a champion on it OR any champion is moving towards it
 
     public List<Tile> adjacentTileList = new List<Tile>();
 

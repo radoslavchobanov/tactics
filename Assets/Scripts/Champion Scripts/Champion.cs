@@ -13,6 +13,8 @@ public enum Class { Warrior, Archer, Mage };
 
 public class Champion : MonoBehaviour
 {
+    public uint ID = 0;
+
     //attacking vars
     private int attackDamage;
     private float attackSpeed; // attacks per second

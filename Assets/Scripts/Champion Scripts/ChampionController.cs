@@ -52,7 +52,7 @@ public class ChampionController : Champion
     {
         gameObject.transform.position += new Vector3(0, 0, 1) * Time.deltaTime * MovementSpeed;
     }
-    public void MoveChampionTowardsTarget()
+    public void MoveChampionTowardsTarget() // moves the champion towards his target according to the shortest path
     {
         if (!IsTargetInRange() || moving)
         {
@@ -65,11 +65,16 @@ public class ChampionController : Champion
         else if (IsTargetInRange())
             championState = ChampionState.Attacking;
     }
-    public void MoveToNextTileFromShortestPath()
+    public void MoveToNextTileFromShortestPath() // moves the champion to the next tile from his calculated shortest path
     {
         if (shortestPath.Count > 0 && !moving)
         {
+            // popping the next tile from the shortest path
             var nextTile = shortestPath.Pop();
+            // if it is not reserved, reserve it
+            if (!nextTile.reserved)
+                nextTile.reserved = true;
+            else if (nextTile.reserved)
 
             // if (nextTile.reserved == false && nextTile.IsTileEmpty())
             // {
@@ -99,7 +104,7 @@ public class ChampionController : Champion
 
         MoveToTile(targetTile);
     }
-    public void MoveToTile(Tile tile)
+    public void MoveToTile(Tile tile) // moves the champion to a given 'tile'
     {
         if (tile != null)
         {
@@ -119,8 +124,6 @@ public class ChampionController : Champion
             }
             else if (Vector3.Distance(gameObject.transform.position, targetPos) < 0.01f)
             {
-                tile.reserved = false; // freeing the reserved tile when arriving on it
-
                 moving = false;
                 gameObject.transform.position = targetPos;
 
@@ -129,7 +132,7 @@ public class ChampionController : Champion
             }
         }
     }
-    public void MoveChampion()
+    public void MoveChampion() // moves the champion towards his target OR if it has no target, moves forward
     {
         // play running animation
         if (target)
@@ -145,13 +148,13 @@ public class ChampionController : Champion
         else MoveChampionForward();
     }
 
-    public void OnTargetDead()
+    public void OnTargetDead() // do that when a champion's current target dies
     {
         target.GetComponent<ChampionController>().isDead = true;
         target.transform.position = new Vector3(target.transform.position.x + 100, target.transform.position.y, target.transform.position.z);
         target.SetActive(false);
     }
-    public void AttackTarget()
+    public void AttackTarget() // the champion makes an attack on his current target
     {
         // play attack animation
         ChampionController targetController = target.GetComponent<ChampionController>();
@@ -170,7 +173,7 @@ public class ChampionController : Champion
             OnTargetDead();
         }
     }
-    public void FightTarget()
+    public void FightTarget() // the champion battles his current target until it is dead
     {
         CalculateDistanceToTarget();
         if (distanceToTarget > AttackRange) // ako po vreme na bitka, targeta se otdalechi ot range da trugva kam nego
@@ -188,7 +191,7 @@ public class ChampionController : Champion
             championState = ChampionState.Moving;
     }
 
-    public bool IsTargetInRange()
+    public bool IsTargetInRange() // checks if target is in range for attack ... TRUE if it is in range, FALSE if not in range
     {
         CalculateDistanceToTarget();
         if (distanceToTarget >= AttackRange)
