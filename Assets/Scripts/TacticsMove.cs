@@ -10,6 +10,7 @@ public enum GameState { BuyingRound, FightingRound };
 
 public class TacticsMove : MonoBehaviour
 {
+    public GameObject arthurPrefab;
     //singleton -----------------------------------------------------------
     public static TacticsMove singleton;
     //---------------------------------------------------------------------
@@ -76,7 +77,15 @@ public class TacticsMove : MonoBehaviour
         TacticsMoveEvents.FightRoundEnd.AddListener(OnFightRoundEnd);
 
         //UI shop vars
-        aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
+        aragornButton.onClick.AddListener(() =>
+        { 
+            GameObject arthur = Instantiate(arthurPrefab, new Vector3(4, 1.4f, 0), Quaternion.identity);
+            arthur.AddComponent<AllyChampController>();
+            arthur.AddComponent<DragObject>();
+            arthur.AddComponent<FindClosestEnemy>();
+            arthur.AddComponent<HeadingController>();
+        });
+        // aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
         sarumanButton.onClick.AddListener(() => { CreateChampion("Saruman", new Vector3(5, 1.4f, 0), Color.white); });
         legolasButton.onClick.AddListener(() => { CreateChampion("Legolas", new Vector3(6, 1.4f, 0), Color.yellow); });
 

@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8962afd221b2694c8a6b9a666dbb060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arthurPrefab: {fileID: 5930651934574334247, guid: 7bf201eb93a64ab47857ce81b796a258, type: 3}
   aragornButton: {fileID: 1855598326}
   sarumanButton: {fileID: 642526105}
   legolasButton: {fileID: 1534164557}
@@ -975,6 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9bb8809c0554d4485bdf8c8dba4db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   haveBuffForUpdate: 0
   target: {fileID: 0}
   healthBar: {fileID: 1332594906}
