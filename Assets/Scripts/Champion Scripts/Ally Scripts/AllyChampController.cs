@@ -151,6 +151,5 @@ public class AllyChampController : ChampionController
         }
         else
             gameObject.transform.position = new Vector3(currentPlacedTile.transform.position.x, gameObject.transform.position.y, currentPlacedTile.transform.position.z);
-
     }
-}       
+}

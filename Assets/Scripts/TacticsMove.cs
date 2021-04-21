@@ -16,7 +16,7 @@ public class TacticsMove : MonoBehaviour
     //---------------------------------------------------------------------
 
     //UI shop vars --------------------------------------------------------
-    public  Button aragornButton, sarumanButton, legolasButton;
+    public  Button aragornButton, sarumanButton, legolasButton, arthurButton;
     //---------------------------------------------------------------------
 
     //UI synergy vars for UI synergy text panel11 -------------------------
@@ -77,14 +77,8 @@ public class TacticsMove : MonoBehaviour
         TacticsMoveEvents.FightRoundEnd.AddListener(OnFightRoundEnd);
 
         //UI shop vars
-        aragornButton.onClick.AddListener(() =>
-        {
-            GameObject champ = Instantiate(arthurPrefab, new Vector3(4, 1.4f, 0), Quaternion.identity);
-            ChampionsOnScreen.Add(champ);
-            ChampionsOnBench.Add(champ);
-        });
-
-        // aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
+        arthurButton.onClick.AddListener(() =>{ CreateChampion(arthurPrefab, new Vector3(4, 1.4f, 0)); });  
+        aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
         sarumanButton.onClick.AddListener(() => { CreateChampion("Saruman", new Vector3(5, 1.4f, 0), Color.white); });
         legolasButton.onClick.AddListener(() => { CreateChampion("Legolas", new Vector3(6, 1.4f, 0), Color.yellow); });
 
@@ -135,7 +129,7 @@ public class TacticsMove : MonoBehaviour
         RaycastHit hit;
         Tile tile = null;
 
-        if (Physics.Raycast(champion.transform.position, -Vector3.up, out hit, 1))
+        if (Physics.Raycast(champion.transform.position, Vector3.down, out hit, 1))
         {
             tile = hit.collider.GetComponent<Tile>();
         }
@@ -465,6 +459,14 @@ public class TacticsMove : MonoBehaviour
 
         ChampionsOnScreen.Add(champ);
         ChampionsOnBench.Add(champ);
+        return champ;
+    }
+    public GameObject CreateChampion(GameObject prefab, Vector3 startingPos)
+    {
+        GameObject champ = Instantiate(prefab, startingPos, Quaternion.identity);
+        ChampionsOnScreen.Add(champ);
+        ChampionsOnBench.Add(champ);
+
         return champ;
     }
     
