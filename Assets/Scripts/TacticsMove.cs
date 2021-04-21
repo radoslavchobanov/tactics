@@ -78,13 +78,12 @@ public class TacticsMove : MonoBehaviour
 
         //UI shop vars
         aragornButton.onClick.AddListener(() =>
-        { 
-            GameObject arthur = Instantiate(arthurPrefab, new Vector3(4, 1.4f, 0), Quaternion.identity);
-            arthur.AddComponent<AllyChampController>();
-            arthur.AddComponent<DragObject>();
-            arthur.AddComponent<FindClosestEnemy>();
-            arthur.AddComponent<HeadingController>();
+        {
+            GameObject champ = Instantiate(arthurPrefab, new Vector3(4, 1.4f, 0), Quaternion.identity);
+            ChampionsOnScreen.Add(champ);
+            ChampionsOnBench.Add(champ);
         });
+
         // aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
         sarumanButton.onClick.AddListener(() => { CreateChampion("Saruman", new Vector3(5, 1.4f, 0), Color.white); });
         legolasButton.onClick.AddListener(() => { CreateChampion("Legolas", new Vector3(6, 1.4f, 0), Color.yellow); });

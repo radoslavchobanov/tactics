@@ -74,7 +74,6 @@ public class ChampionController : Champion
             // if it is not reserved, reserve it
             if (!nextTile.reserved)
                 nextTile.reserved = true;
-            else if (nextTile.reserved)
 
             // if (nextTile.reserved == false && nextTile.IsTileEmpty())
             // {
