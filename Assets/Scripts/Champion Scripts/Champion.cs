@@ -5,7 +5,7 @@ using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public enum ChampionState { Attacking, Moving, Idle, Dragged, OnWaiting};
+public enum ChampionState { Attacking, Moving, Idle, Dead, Dragged, OnWaiting};
 public enum ChampionAttackType { Melee, Range };
 
 public enum Race { Human, Orc, Elf };

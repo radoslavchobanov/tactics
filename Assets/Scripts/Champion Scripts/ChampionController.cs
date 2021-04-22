@@ -149,6 +149,7 @@ public class ChampionController : Champion
 
     public void OnTargetDead() // do that when a champion's current target dies
     {
+        target.GetComponent<ChampionController>().championState = ChampionState.Dead;
         target.GetComponent<ChampionController>().isDead = true;
         target.transform.position = new Vector3(target.transform.position.x + 100, target.transform.position.y, target.transform.position.z);
         target.SetActive(false);

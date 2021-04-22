@@ -117,7 +117,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: arthur_attack_01
+  m_Name: attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -144,7 +144,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: arthur_dead_01
+  m_Name: dead
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -196,7 +196,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: arthur_idle_01
+  m_Name: idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -225,7 +225,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: arthur_walk_01
+  m_Name: walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

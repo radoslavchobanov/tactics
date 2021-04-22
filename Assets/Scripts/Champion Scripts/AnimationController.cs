@@ -21,9 +21,10 @@ public class AnimationController : MonoBehaviour
         anim = this.gameObject.GetComponent<Animator>();
         championStateAnimName = new Dictionary<ChampionState, string>()
         {
-            {ChampionState.Idle, "arthur_idle_01"},
-            {ChampionState.Moving, "arthur_walk_01"},
-            {ChampionState.Attacking, "arthur_attack_01"},
+            {ChampionState.Idle, "idle"},
+            {ChampionState.Moving, "walk"},
+            {ChampionState.Attacking, "attack"},
+            {ChampionState.Dead, "dead"},
         };
 
         if (gameObject != null)
