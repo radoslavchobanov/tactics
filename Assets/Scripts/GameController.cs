@@ -29,8 +29,6 @@ public class GameController : MonoBehaviour
 
         else if (TacticsMove.singleton.gameState == GameState.FightingRound)
         {
-
-
             TacticsMoveEvents.FightRoundEnd.Invoke();
 
             TacticsMove.singleton.gameState = GameState.BuyingRound; // buy round begin

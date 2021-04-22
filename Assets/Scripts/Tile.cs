@@ -101,7 +101,7 @@ public class Tile : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == targetTile))
+                if (tile != this && !Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1) || (tile == targetTile))
                 {
                     adjacentTileList.Add(tile);
                 }

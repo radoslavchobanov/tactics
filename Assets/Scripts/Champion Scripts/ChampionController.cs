@@ -74,29 +74,10 @@ public class ChampionController : Champion
             // if it is not reserved, reserve it
             if (!nextTile.reserved)
                 nextTile.reserved = true;
-
-            // if (nextTile.reserved == false && nextTile.IsTileEmpty())
-            // {
-            //     nextTile.reserved = true;
-            //     targetTile = nextTile;
-
-            //     var timeSpan = System.DateTime.Now - GameController.startRoundTime;
-            //     Debug.Log( timeSpan.Seconds + ":" + timeSpan.Milliseconds + " : " + this.name + "targeted" + targetTile.name );
-            // }
-            // else if (nextTile.reserved == false && !nextTile.IsTileEmpty())
-            // {
-            //     return;
-            // }
-            // else if (nextTile.reserved == true)
-            // {
-            //     this.championState = ChampionState.OnWaiting;
-            //     return;
-            // }
-
-            // ima nqkolko sluchaq: 
-            // 1 -> sledvashtiq tile na koito trqbva da otide geroq e zaet (ima nqkoi na nego), !IsTileEmpty(), togava 'targetTile' trqbva da e nai blizkiq do NE zaet, NE rezerviran
-            // 2 -> na 'targetTile' nqma nikoi, no nqkoi go e rezerviral che otiva na nego (reserved = true). togava pak 'targetTile' trqbva da e nai blizkiq do NE zaet, NE rezerviran
-            // 3 -> na 'targetTile' nqma nikoi i ne e rezerviran. Otivai na nego.
+            else if (nextTile.reserved)
+            {
+                nextTile = nextTile.adjacentTileList[0];
+            }
             
             targetTile = nextTile;
         }
@@ -110,7 +91,7 @@ public class ChampionController : Champion
             Vector3 targetPos = tile.transform.position;
             targetPos.y += halfHeight + tile.GetComponent<Collider>().bounds.extents.y;
 
-            if (Vector3.Distance(gameObject.transform.position, targetPos) >= 0.01f)
+            if (Vector3.Distance(gameObject.transform.position, targetPos) >= 0.01f) // starting to move towards the target tile
             {
                 moving = true;
 
@@ -121,10 +102,12 @@ public class ChampionController : Champion
                 gameObject.transform.forward = heading;
                 gameObject.transform.position += velocity * Time.deltaTime;
             }
-            else if (Vector3.Distance(gameObject.transform.position, targetPos) < 0.01f)
+            else if (Vector3.Distance(gameObject.transform.position, targetPos) < 0.01f) // arriving on the target tile
             {
                 moving = false;
                 gameObject.transform.position = targetPos;
+
+                tile.reserved = false;
 
                 CalculatePaths();
                 FindShortestPath();
@@ -265,6 +248,8 @@ public class ChampionController : Champion
     }
     public void FindShortestPath()
     {
+        shortestPath.Clear();
+
         Tile currTile = target.GetComponent<ChampionController>().GetCurrentTile().parent;
         while (currTile != GetCurrentTile() && shortestPath.Count < target.GetComponent<ChampionController>().GetCurrentTile().fCost - 1)
         {
@@ -278,7 +263,7 @@ public class ChampionController : Champion
         Tile lowest = list[0];
         foreach (Tile t in list)
         {
-            if (!t.isPlayerOn && t.fCost < lowest.fCost || t.fCost == lowest.fCost && t.hCost < lowest.hCost)
+            if (!t.isPlayerOn && !t.reserved && t.fCost < lowest.fCost || t.fCost == lowest.fCost && t.hCost < lowest.hCost)
             {
                 lowest = t;
             }

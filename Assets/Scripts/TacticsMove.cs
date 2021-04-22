@@ -164,6 +164,14 @@ public class TacticsMove : MonoBehaviour
             t.FindNeighbors(targetTile);
         }
     }
+    public void ResetTiles()
+    {
+        foreach (GameObject obj in map)
+        {
+            Tile t = obj.GetComponent<Tile>();
+            t.reserved = false;
+        }
+    }
     //----------------------------------------------------------
 
     //Champions functions -----------------------------------------
