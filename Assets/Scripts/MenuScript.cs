@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 public class MenuScript
@@ -17,7 +15,7 @@ public class MenuScript
         }
     }
 
-    [MenuItem("Tools/Assign Tile Script")]
+    [UnityEditor.MenuItem("Tools/Assign Tile Script")]
     public static void AssignTileScript()
     {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -25,6 +23,17 @@ public class MenuScript
         foreach (GameObject t in tiles)
         {
             t.AddComponent<Tile>();
+        }
+    }
+
+    [MenuItem("Tools/Assign Tile Names")]
+    public static void AssignTileNames()
+    {
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+
+        foreach (GameObject t in tiles)
+        {
+            t.name = "Tile" + " (" + t.transform.position.x + "," + t.transform.position.z + ")";
         }
     }
 }
