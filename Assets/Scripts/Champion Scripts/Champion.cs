@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 public enum ChampionState { Attacking, Moving, Idle, Dead, Dragged, OnWaiting};
 public enum ChampionAttackType { Melee, Range };

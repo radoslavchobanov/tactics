@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using UnityEngine;
 
 public enum GameState { BuyingRound, FightingRound };
