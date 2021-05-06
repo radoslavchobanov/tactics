@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class AnimationController : MonoBehaviour
 {
-    private Animator anim;
+    private Animator animator;
     private Dictionary<ChampionState, string> championStateAnimName;
 
     private ChampionController controller;
@@ -18,7 +18,7 @@ public class AnimationController : MonoBehaviour
 
     private void Start()
     {
-        anim = this.gameObject.GetComponent<Animator>();
+        animator = this.gameObject.GetComponent<Animator>();
         championStateAnimName = new Dictionary<ChampionState, string>()
         {
             {ChampionState.Idle, "idle"},
@@ -33,12 +33,9 @@ public class AnimationController : MonoBehaviour
     
     private void Update() 
     {
-        timer = Time.deltaTime;
-
-        // if (timer == 60)
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
         {
-            anim.Play(championStateAnimName[controller.championState]);
-            timer = 0;
+            animator.Play(championStateAnimName[controller.championState]);
         }
     }
 }

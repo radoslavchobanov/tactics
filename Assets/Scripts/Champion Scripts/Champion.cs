@@ -13,8 +13,6 @@ public enum Class { Warrior, Archer, Mage };
 
 public class Champion : MonoBehaviour
 {
-    public uint ID = 0;
-
     //attacking vars
     private int attackDamage;
     private float attackSpeed; // attacks per second
@@ -29,14 +27,12 @@ public class Champion : MonoBehaviour
     private int health;
     private int mana;
     private float movementSpeed;
-    public List<Buff> buffs = new List<Buff>(); // ?
 
     //spec vars
     private Class _class;
     private Race _race;
 
     //flags
-    public bool haveBuffForUpdate = false;
 
     // getters and setters
     public int AttackDamage { get => this.attackDamage; set {this.attackDamage = value;}}
