@@ -2,7 +2,7 @@
 
 public class SynergyBuff : MonoBehaviour
 {
-    protected Champion receiver;
+    protected Champion receiver; // the champion thats getting the buff
     protected int attackDamage;
     protected int armor;
 
