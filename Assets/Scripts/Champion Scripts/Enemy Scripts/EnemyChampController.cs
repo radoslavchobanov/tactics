@@ -20,8 +20,8 @@ public class EnemyChampController : ChampionController
 
     void Start()
     {
-        InitEnemyBoss();
         InitController();
+        InitEnemyBoss();
     }
     
     void Update()

@@ -28,7 +28,7 @@ public class AnimationController : MonoBehaviour
     
     private void Update() 
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
+        // if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
         {
             animator.Play(championStateAnimName[controller.championState]);
         }

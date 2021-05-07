@@ -75,7 +75,7 @@ public class TacticsMove : MonoBehaviour
         TacticsMoveEvents.FightRoundEnd.AddListener(OnFightRoundEnd);
 
         //UI shop vars
-        arthurButton.onClick.AddListener(() =>{ CreateChampion(arthurPrefab, new Vector3(4, 1.4f, 0)); });  
+        arthurButton.onClick.AddListener(() => { CreateChampion(arthurPrefab, new Vector3(4, 0.51f, 0)); });
         aragornButton.onClick.AddListener(() => { CreateChampion("Aragorn", new Vector3(4, 1.4f, 0), Color.red); });
         sarumanButton.onClick.AddListener(() => { CreateChampion("Saruman", new Vector3(5, 1.4f, 0), Color.white); });
         legolasButton.onClick.AddListener(() => { CreateChampion("Legolas", new Vector3(6, 1.4f, 0), Color.yellow); });

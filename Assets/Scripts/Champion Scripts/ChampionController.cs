@@ -28,8 +28,14 @@ public class ChampionController : Champion
     {
         target = null;
         distanceToTarget = Mathf.Infinity;
-        halfHeight = 0.9f; /*GetComponent<Collider>().bounds.extents.y;*/ // get collidera nqkuv put vrushta 1 vmesto 0.9f i stava greshka pri vectora, nikva ideq zashto
+        halfHeight = 0f; /*GetComponent<Collider>().bounds.extents.y;*/ // get collidera nqkuv put vrushta 1 vmesto 0.9f i stava greshka pri vectora, nikva ideq zashto
         isDead = false;
+
+        // if a Slider for healthbar or Text for stats is not initialised from the editor (dragged and dropped)
+        if (healthBar == null)
+            print("Champion { " + this.name + " } healthbar not initialised !!!");
+        if (statsTextbox == null)
+            print("Champion { " + this.name + " } statsText not initialised !!!");
     }
 
     public Tile GetCurrentTile()
