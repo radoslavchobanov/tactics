@@ -89,14 +89,13 @@ public class AllyChampController : ChampionController
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().enabled == true)
+            if (statsTextbox.enabled == true)
             {
-                this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().enabled = false;
+                statsTextbox.enabled = false;
                 return;
             }
-
-                this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().text = MakeStringWithStats();
-                this.gameObject.transform.Find("Canvas").Find("Text").GetComponent<Text>().enabled = true;
+            statsTextbox.text = MakeStringWithStats();
+            statsTextbox.enabled = true;
         }    
     }
 

@@ -3097,8 +3097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b1d65a997269a4ab17e99877adf8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  haveBuffForUpdate: 0
 --- !u!114 &2820898814246927803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3111,10 +3109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2ba9510cffa184f9255627e4887672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
-  haveBuffForUpdate: 0
   target: {fileID: 0}
   healthBar: {fileID: 7807555433273747430}
+  statsTextbox: {fileID: 872818334445873858}
   distanceToTarget: 0
   championState: 0
   targetTile: {fileID: 0}
@@ -4655,5 +4652,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &872818334445873858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7227085050628710686, guid: e8868c183bacc574a859a8ba8804fe62, type: 3}
+  m_PrefabInstance: {fileID: 7518509123560442844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

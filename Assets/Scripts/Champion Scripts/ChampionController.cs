@@ -7,6 +7,7 @@ public class ChampionController : Champion
     //controller vars
     public GameObject target; // focused enemy
     public Slider healthBar;
+    public Text statsTextbox;
     public float distanceToTarget;
     public ChampionState championState;
 
