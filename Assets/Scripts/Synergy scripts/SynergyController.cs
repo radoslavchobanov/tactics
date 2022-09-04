@@ -192,16 +192,16 @@ public class SynergyController : SynergyBuffGiver
         //finding the race and class of the given champ
         if (tempRace == Race.Human)
             HumanCounter++;
-        if (tempRace == Race.Orc)
+        else if (tempRace == Race.Orc)
             OrcCounter++;
-        if (tempRace == Race.Elf)
+        else if (tempRace == Race.Elf)
             ElfCounter++;
 
         if (tempClass == Class.Warrior)
             WarriorCounter++;
-        if (tempClass == Class.Archer)
+        else if (tempClass == Class.Archer)
             ArcherCounter++;
-        if (tempClass == Class.Mage)
+        else if (tempClass == Class.Mage)
             MageCounter++;
         // ...
         print("Champion " + champ + " added to synergies succesfully !!!");
